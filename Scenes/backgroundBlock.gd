@@ -13,8 +13,6 @@ func _ready():
 	else:
 		sprite_2d.frame = 21
 		
-	print(str(curbg))
-	print(str(sprite_2d.frame))
 	pass # Replace with function body.
 
 
