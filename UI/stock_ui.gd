@@ -1,4 +1,4 @@
-extends Control
+extends MarginContainer
 
 @onready var purple_count = %PurpleCount
 @onready var blue_count = %BlueCount

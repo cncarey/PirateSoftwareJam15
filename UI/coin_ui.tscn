@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccaa434x3bi5y"]
+
+[ext_resource type="Script" path="res://UI/coin_ui.gd" id="1_48uo7"]
+[ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="1_r6sbb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpfx5"]
+atlas = ExtResource("1_r6sbb")
+region = Rect2(803, 183, 160, 161)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia1vf"]
+atlas = ExtResource("1_r6sbb")
+region = Rect2(1280, 0, 160, 160)
+
+[node name="CoinUI" type="MarginContainer"]
+offset_right = 160.0
+offset_bottom = 160.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_48uo7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = -80
+theme_override_constants/margin_bottom = 5
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_tpfx5")
+patch_margin_left = 15
+patch_margin_top = 14
+patch_margin_right = 12
+patch_margin_bottom = 11
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 19
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 19
+
+[node name="CoinCount" type="Label" parent="MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00"
+horizontal_alignment = 2
+
+[node name="CoinIcon" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ia1vf")

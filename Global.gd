@@ -4,6 +4,18 @@ extends Node
 func _ready():
 	pass
 
+@export var coins = 0:
+	set(value):
+		coins = maxi(0, value)
+		coins_changed.emit(coins)
+	get:
+		return coins
+func tryTakeCoins(dec: int) -> bool:
+	if coins - dec < 0:
+		return false
+	else:
+		coins -= dec
+		return true
 #purple
 @export var purple = 0 : 
 	set(value):
@@ -74,8 +86,9 @@ func tryTakePink(dec: int) -> bool:
 		pink -= dec
 		return true
 		
-signal purple_changed(ammo)
-signal blue_changed(ammo)
-signal orange_changed(ammo)
-signal green_changed(ammo)
-signal pink_changed(ammo)
+signal coins_changed(coins)
+signal purple_changed(p)
+signal blue_changed(b)
+signal orange_changed(o)
+signal green_changed(g)
+signal pink_changed(p)

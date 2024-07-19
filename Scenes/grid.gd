@@ -33,18 +33,27 @@ func instBoard():
 func spawnPotions():
 	for w in width:
 		for h in height:
-			var p = potion.instantiate()
-			var bg = backGround.instantiate()
-			add_child(bg)
-			add_child(p)
-			var loops = 0
-			while (checkForMatch(w, h, p.curPotionType) && loops < 100):
-				p.newPotionType()
-				loops += 1
-			bg.global_position = gridToPixel(w, h)
-			p.global_position = gridToPixel(w, h)
-			p.z_index = 100
-			potions[w][h] = p
+			initPotion(w, h)
+			
+func initPotion(w: int, h: int, moveToPosition: bool = false):
+	var p = potion.instantiate()
+	var bg = backGround.instantiate()
+	add_child(bg)
+	add_child(p)
+	var loops = 0
+	while (checkForMatch(w, h, p.curPotionType) && loops < 100):
+		p.newPotionType()
+		loops += 1
+	bg.global_position = gridToPixel(w, h)
+	
+	if moveToPosition:
+		p.global_position = gridToPixel(w, h + yOffeset)
+		p.move(gridToPixel(w, h))
+	else:
+		p.global_position = gridToPixel(w, h)
+	
+	p.z_index = 100
+	potions[w][h] = p
 
 func checkForMatch( column: int, row: int, potionType: int) -> bool:
 	var left = column - 1
@@ -173,3 +182,12 @@ func collapseColumns():
 						potions[w][h] = potions[w][k]
 						potions[w][k] = null
 						break
+	await get_tree().create_timer(.3).timeout					
+	fillEmpty()
+
+func fillEmpty():
+	for w in width:
+		for h in height:
+			if potions[w][h] == null:
+				initPotion(w, h, true)
+	pass
