@@ -1,0 +1,139 @@
+[gd_scene load_steps=9 format=3 uid="uid://8iu0ai5gbim8"]
+
+[ext_resource type="Script" path="res://UI/stock_ui.gd" id="1_debrp"]
+[ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="1_fjrp3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrwxp"]
+atlas = ExtResource("1_fjrp3")
+region = Rect2(803, 183, 160, 161)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwxeq"]
+atlas = ExtResource("1_fjrp3")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eils8"]
+atlas = ExtResource("1_fjrp3")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4p7p"]
+atlas = ExtResource("1_fjrp3")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83o47"]
+atlas = ExtResource("1_fjrp3")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6jkk"]
+atlas = ExtResource("1_fjrp3")
+region = Rect2(650, 0, 160, 160)
+
+[node name="StockUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_debrp")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 192.0
+texture = SubResource("AtlasTexture_vrwxp")
+patch_margin_left = 15
+patch_margin_top = 14
+patch_margin_right = 12
+patch_margin_bottom = 11
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_right = 56.0
+offset_bottom = 172.0
+theme_override_constants/margin_left = 21
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Stock" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stock"
+
+[node name="PurpleContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PurpleIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/PurpleContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_hwxeq")
+expand_mode = 3
+
+[node name="PurpleCount" type="Label" parent="MarginContainer/VBoxContainer/PurpleContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0
+"
+
+[node name="BlueContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BlueIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/BlueContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_eils8")
+expand_mode = 3
+
+[node name="BlueCount" type="Label" parent="MarginContainer/VBoxContainer/BlueContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="OrangeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="OrangeIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/OrangeContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_k4p7p")
+expand_mode = 3
+
+[node name="OrangeCount" type="Label" parent="MarginContainer/VBoxContainer/OrangeContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="GreenContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="GreenIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/GreenContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_83o47")
+expand_mode = 3
+
+[node name="GreenCount" type="Label" parent="MarginContainer/VBoxContainer/GreenContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="PinkContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PinkIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/PinkContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_e6jkk")
+expand_mode = 3
+
+[node name="PinkCount" type="Label" parent="MarginContainer/VBoxContainer/PinkContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"

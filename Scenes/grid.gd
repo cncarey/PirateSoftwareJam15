@@ -137,25 +137,20 @@ func findMatches():
 					var right = w + 1
 					if potions[left][h] != null && potions[right][h] != null:
 						if potions[left][h].curPotionType == curPotionType && potions[right][h].curPotionType == curPotionType:
-							updatePotion(potions[left][h] as potion)
-							updatePotion(potions[w][h] as potion)
-							updatePotion(potions[right][h] as potion)
+							potions[left][h].onMatch()
+							potions[w][h].onMatch()
+							potions[right][h].onMatch()
 				if h > 0 && h < height - 1:
 					var up = h - 1
 					var down = h + 1
 					if potions[w][up] != null && potions[w][down] != null:
 						if potions[w][up].curPotionType == curPotionType && potions[w][down].curPotionType == curPotionType:
-							updatePotion(potions[w][up] as potion)
-							updatePotion(potions[w][h] as potion)
-							updatePotion(potions[w][down] as potion)
+							potions[w][up].onMatch()
+							potions[w][h].onMatch()
+							potions[w][down].onMatch()
 							
 	await get_tree().create_timer(.3).timeout
 	destroyMatched()
-	
-func updatePotion(item: potion):
-	item.hasMatch = true
-	item.onMatch()
-	pass
 
 func destroyMatched():
 	for w in width:
@@ -164,4 +159,17 @@ func destroyMatched():
 				if potions[w][h].hasMatch:
 					potions[w][h].queue_free()
 					potions[w][h] = null
-	
+							
+	await get_tree().create_timer(.3).timeout
+	collapseColumns()
+
+func collapseColumns():
+	for w in width:
+		for h in height:
+			if potions[w][h] == null:
+				for k in range(h + 1, height):
+					if potions[w][k] != null:
+						potions[w][k].move(gridToPixel(w, h))
+						potions[w][h] = potions[w][k]
+						potions[w][k] = null
+						break

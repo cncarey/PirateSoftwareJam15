@@ -24,4 +24,18 @@ func move(target: Vector2):
 func onMatch():
 	sprite_2d.modulate = Color(1,1,1,.5)
 	#update my corresponding inventory item
-	pass
+	if !hasMatch:
+		match curPotionType:
+			potionTypes.purple:
+				Global.purple += 1
+			potionTypes.blue:
+				Global.blue += 1
+			potionTypes.orange:
+				Global.orange += 1
+			potionTypes.green:
+				Global.green += 1
+			potionTypes.pink:
+				Global.pink += 1
+				
+	hasMatch = true
+
