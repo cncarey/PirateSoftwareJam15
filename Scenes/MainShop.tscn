@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1sm4f0hdd0g6"]
+[gd_scene load_steps=5 format=3 uid="uid://c1sm4f0hdd0g6"]
 
 [ext_resource type="Script" path="res://Scenes/grid.gd" id="1_8rfly"]
 [ext_resource type="PackedScene" uid="uid://8iu0ai5gbim8" path="res://UI/stock_ui.tscn" id="1_xwje5"]
 [ext_resource type="PackedScene" uid="uid://ccaa434x3bi5y" path="res://UI/coin_ui.tscn" id="3_8k7vs"]
+[ext_resource type="Texture2D" uid="uid://c3a63kk836ggx" path="res://icon.svg" id="4_ts8jg"]
 
 [node name="GameWindow" type="Node2D"]
 
@@ -11,25 +12,39 @@ script = ExtResource("1_8rfly")
 width = 6
 height = 5
 xStart = 160
-yStart = 500
+yStart = 570
 xOffset = 80
 yOffeset = 80
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+[node name="CoinUI" parent="CanvasLayer" instance=ExtResource("3_8k7vs")]
+offset_left = 5.0
+offset_top = 5.0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = -16
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
 
-[node name="CoinUI" parent="CanvasLayer/MarginContainer/VBoxContainer" instance=ExtResource("3_8k7vs")]
-layout_mode = 2
-theme_override_constants/margin_left = -5
-
-[node name="StockUI" parent="CanvasLayer/MarginContainer/VBoxContainer" instance=ExtResource("1_xwje5")]
-layout_mode = 2
+[node name="StockUI" parent="CanvasLayer" instance=ExtResource("1_xwje5")]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 94.0
+offset_bottom = 307.0
 size_flags_horizontal = 4
 size_flags_vertical = 3
+theme_override_constants/margin_top = 125
+
+[node name="StoreEntry" type="Sprite2D" parent="."]
+position = Vector2(347, 67)
+scale = Vector2(1.51562, 1)
+texture = ExtResource("4_ts8jg")
+
+[node name="NoticeBoard" type="Sprite2D" parent="."]
+position = Vector2(598, 31)
+scale = Vector2(0.320312, 0.320312)
+texture = ExtResource("4_ts8jg")

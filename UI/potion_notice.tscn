@@ -1,0 +1,192 @@
+[gd_scene load_steps=9 format=3 uid="uid://bqawtkyvje8d2"]
+
+[ext_resource type="Script" path="res://UI/potion_notice.gd" id="1_5oo7r"]
+[ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="1_f7ras"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iq0q"]
+atlas = ExtResource("1_f7ras")
+region = Rect2(803, 183, 160, 161)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1emla"]
+atlas = ExtResource("1_f7ras")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfrf5"]
+atlas = ExtResource("1_f7ras")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcq10"]
+atlas = ExtResource("1_f7ras")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qb55"]
+atlas = ExtResource("1_f7ras")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpux2"]
+atlas = ExtResource("1_f7ras")
+region = Rect2(650, 0, 160, 160)
+
+[node name="PotionNotice" type="MarginContainer"]
+offset_right = 125.0
+offset_bottom = 188.0
+script = ExtResource("1_5oo7r")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8iq0q")
+patch_margin_left = 15
+patch_margin_top = 14
+patch_margin_right = 12
+patch_margin_bottom = 11
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 17
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 13
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="RemoveContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+
+[node name="RemoveButton" type="Button" parent="MarginContainer/VBoxContainer/RemoveContainer"]
+layout_mode = 2
+text = "Remove"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="NoticeFor" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Notice For: "
+
+[node name="PotionName" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Name of Potion"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Requires" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Requires"
+horizontal_alignment = 1
+
+[node name="RequiresContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PurpleContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/RequiresContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/RequiresContainer/PurpleContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_1emla")
+expand_mode = 5
+
+[node name="PurpleCount" type="Label" parent="MarginContainer/VBoxContainer/RequiresContainer/PurpleContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0"
+
+[node name="BlueContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/RequiresContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/RequiresContainer/BlueContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_wfrf5")
+expand_mode = 5
+
+[node name="BlueCount" type="Label" parent="MarginContainer/VBoxContainer/RequiresContainer/BlueContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0"
+
+[node name="OrangeContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/RequiresContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/RequiresContainer/OrangeContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_rcq10")
+expand_mode = 5
+
+[node name="OrangeCount" type="Label" parent="MarginContainer/VBoxContainer/RequiresContainer/OrangeContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0"
+
+[node name="GreenContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/RequiresContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/RequiresContainer/GreenContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8qb55")
+expand_mode = 5
+
+[node name="GreenCount" type="Label" parent="MarginContainer/VBoxContainer/RequiresContainer/GreenContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0"
+
+[node name="PinkContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/RequiresContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/RequiresContainer/PinkContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_dpux2")
+expand_mode = 5
+
+[node name="PinkCount" type="Label" parent="MarginContainer/VBoxContainer/RequiresContainer/PinkContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0"
+
+[node name="SpecialItem" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Special Item"
+
+[node name="DueDate" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Due in x days"
+
+[node name="YNContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="YesButton" type="Button" parent="MarginContainer/VBoxContainer/YNContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="MarginContainer/VBoxContainer/YNContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "No"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/RemoveContainer/RemoveButton" to="." method="replaceQuest"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/YNContainer/YesButton" to="." method="acceptQuest"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/YNContainer/NoButton" to="." method="closeQuest"]
