@@ -85,6 +85,45 @@ func tryTakePink(dec: int) -> bool:
 	else:
 		pink -= dec
 		return true
+
+@export var flowers = 0 : 
+	set(value):
+		flowers = maxi(0, value)
+		flowers_changed.emit(flowers)
+	get:
+		return flowers
+func tryTakeFlowers(dec: int) -> bool:
+	if flowers - dec < 0:
+		return false
+	else:
+		flowers -= dec
+		return true
+
+@export var eyes = 0 : 
+	set(value):
+		eyes = maxi(0, value)
+		eyes_changed.emit(eyes)
+	get:
+		return eyes
+func tryTakeEyes(dec: int) -> bool:
+	if eyes - dec < 0:
+		return false
+	else:
+		eyes -= dec
+		return true
+		
+@export var mushrooms = 0 : 
+	set(value):
+		mushrooms = maxi(0, value)
+		mushrooms_changed.emit(mushrooms)
+	get:
+		return mushrooms
+func tryTakeMushrooms(dec: int) -> bool:
+	if mushrooms - dec < 0:
+		return false
+	else:
+		mushrooms -= dec
+		return true
 		
 signal coins_changed(coins)
 signal purple_changed(p)
@@ -92,3 +131,6 @@ signal blue_changed(b)
 signal orange_changed(o)
 signal green_changed(g)
 signal pink_changed(p)
+signal flowers_changed(f)
+signal eyes_changed(e)
+signal mushrooms_changed(m)

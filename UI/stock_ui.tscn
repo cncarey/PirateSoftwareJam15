@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://8iu0ai5gbim8"]
+[gd_scene load_steps=12 format=3 uid="uid://8iu0ai5gbim8"]
 
 [ext_resource type="Script" path="res://UI/stock_ui.gd" id="1_debrp"]
 [ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="1_fjrp3"]
@@ -26,6 +26,18 @@ region = Rect2(480, 0, 160, 160)
 [sub_resource type="AtlasTexture" id="AtlasTexture_e6jkk"]
 atlas = ExtResource("1_fjrp3")
 region = Rect2(650, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfpey"]
+atlas = ExtResource("1_fjrp3")
+region = Rect2(820, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq47e"]
+atlas = ExtResource("1_fjrp3")
+region = Rect2(1120, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipgef"]
+atlas = ExtResource("1_fjrp3")
+region = Rect2(970, 0, 160, 160)
 
 [node name="StockUI" type="MarginContainer"]
 script = ExtResource("1_debrp")
@@ -124,6 +136,51 @@ texture = SubResource("AtlasTexture_e6jkk")
 expand_mode = 3
 
 [node name="PinkCount" type="Label" parent="MarginContainer/VBoxContainer/PinkContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="EyeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="EyeIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/EyeContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_pfpey")
+expand_mode = 3
+
+[node name="EyeCount" type="Label" parent="MarginContainer/VBoxContainer/EyeContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="FlowerContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FlowerIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/FlowerContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_oq47e")
+expand_mode = 3
+
+[node name="FlowerCount" type="Label" parent="MarginContainer/VBoxContainer/FlowerContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="MushroomContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MushroomIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/MushroomContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_ipgef")
+expand_mode = 3
+
+[node name="MushroomCount" type="Label" parent="MarginContainer/VBoxContainer/MushroomContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
