@@ -1,5 +1,8 @@
 extends Node2D
 
+enum  {moving, waiting}
+var curState
+
 @export var width: int
 @export var height: int
 @export  var xStart: int
@@ -15,8 +18,15 @@ var startTouch = Vector2(0,0)
 var endTouch = Vector2(0,0)
 var isMoving = true
 
+var lastStart = null
+var lastEnd = null
+var lastGridLoc = Vector2(0,0)
+var lastDirection = Vector2(0,0)
+var moveChecked = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	curState = moving
 	potions = instBoard()
 	spawnPotions()
 	pass # Replace with function body.
@@ -111,13 +121,26 @@ func swapPotions(column: int, row: int, direction: Vector2):
 	var endPotion = potions[newX][newY]
 	if startPotion == null || endPotion == null : return
 	
+	lastStart = startPotion
+	lastEnd = endPotion
+	lastGridLoc = Vector2(column, row)
+	lastDirection = direction
+	
+	curState = waiting
 	potions[column][row] = endPotion
 	potions[newX][newY] = startPotion
 	
 	startPotion.move(gridToPixel(newX, newY))
 	endPotion.move(gridToPixel(column, row))
-	findMatches()
+	if !moveChecked:
+		findMatches()
 	pass
+
+func swapBack():
+	if lastStart != null && lastEnd != null:
+		swapPotions(lastGridLoc.x, lastGridLoc.y, lastDirection)
+	curState = moving
+	moveChecked = false
 
 func translateMove(start: Vector2, end: Vector2):
 	var diff = end - start
@@ -134,7 +157,8 @@ func translateMove(start: Vector2, end: Vector2):
 			swapPotions(start.x, start.y, Vector2(0,-1))	
 
 func _process(delta):
-	isTouched()
+	if curState == moving:
+		isTouched()
 	
 func findMatches():
 	for w in width:
@@ -162,15 +186,21 @@ func findMatches():
 	destroyMatched()
 
 func destroyMatched():
+	var foundMatch = false
 	for w in width:
 		for h in height:
 			if potions[w][h] != null:
 				if potions[w][h].hasMatch:
+					foundMatch = true
 					potions[w][h].queue_free()
 					potions[w][h] = null
-							
-	await get_tree().create_timer(.3).timeout
-	collapseColumns()
+
+	moveChecked = true
+	if foundMatch:							
+		await get_tree().create_timer(.3).timeout
+		collapseColumns()
+	else:
+		swapBack()
 
 func collapseColumns():
 	for w in width:
@@ -190,5 +220,16 @@ func fillEmpty():
 		for h in height:
 			if potions[w][h] == null:
 				initPotion(w, h, true)
-	pass
+	afterFillEmpty()
 
+func afterFillEmpty():
+	for w in width:
+		for h in height:
+			if potions[w][h] != null:
+				if checkForMatch(w, h, potions[w][h].curPotionType):
+					findMatches()
+					await get_tree().create_timer(.3).timeout	
+					destroyMatched()
+					return
+	curState = moving
+	moveChecked = false
