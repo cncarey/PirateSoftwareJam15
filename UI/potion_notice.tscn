@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqawtkyvje8d2"]
+[gd_scene load_steps=10 format=3 uid="uid://bqawtkyvje8d2"]
 
 [ext_resource type="Script" path="res://UI/potion_notice.gd" id="1_5oo7r"]
 [ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="1_f7ras"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8iq0q"]
 atlas = ExtResource("1_f7ras")
-region = Rect2(803, 183, 160, 161)
+region = Rect2(803, 162, 152, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1emla"]
 atlas = ExtResource("1_f7ras")
@@ -27,6 +27,9 @@ region = Rect2(480, 0, 160, 160)
 atlas = ExtResource("1_f7ras")
 region = Rect2(650, 0, 160, 160)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pufue"]
+atlas = ExtResource("1_f7ras")
+
 [node name="PotionNotice" type="MarginContainer"]
 offset_right = 125.0
 offset_bottom = 188.0
@@ -35,9 +38,9 @@ script = ExtResource("1_5oo7r")
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
 texture = SubResource("AtlasTexture_8iq0q")
-patch_margin_left = 15
+patch_margin_left = 12
 patch_margin_top = 14
-patch_margin_right = 12
+patch_margin_right = 14
 patch_margin_bottom = 11
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -172,6 +175,19 @@ text = "Special Item"
 [node name="DueDate" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Due in x days"
+
+[node name="PayoutContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CoinIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/PayoutContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_pufue")
+expand_mode = 3
+
+[node name="Payout" type="Label" parent="MarginContainer/VBoxContainer/PayoutContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0000"
 
 [node name="YNContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

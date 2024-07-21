@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc3gbqvsct66"]
+
+[ext_resource type="Script" path="res://UI/notice_board.gd" id="1_6mxa5"]
+[ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="2_npk88"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13nfe"]
+atlas = ExtResource("2_npk88")
+region = Rect2(324, 482, 308, 310)
+
+[node name="NoticeBoard" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_6mxa5")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_13nfe")
+patch_margin_left = 44
+patch_margin_top = 51
+patch_margin_right = 45
+patch_margin_bottom = 41
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 51
+theme_override_constants/margin_top = 61
+theme_override_constants/margin_right = 55
+theme_override_constants/margin_bottom = 51
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Notice Board"
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Close" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Close"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Close" to="." method="onClose"]

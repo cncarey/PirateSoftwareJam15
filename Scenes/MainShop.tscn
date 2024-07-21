@@ -1,11 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1sm4f0hdd0g6"]
+[gd_scene load_steps=8 format=3 uid="uid://c1sm4f0hdd0g6"]
 
+[ext_resource type="Script" path="res://Scenes/MainShop.gd" id="1_1y7xo"]
 [ext_resource type="Script" path="res://Scenes/grid.gd" id="1_8rfly"]
 [ext_resource type="PackedScene" uid="uid://8iu0ai5gbim8" path="res://UI/stock_ui.tscn" id="1_xwje5"]
 [ext_resource type="PackedScene" uid="uid://ccaa434x3bi5y" path="res://UI/coin_ui.tscn" id="3_8k7vs"]
-[ext_resource type="Texture2D" uid="uid://c3a63kk836ggx" path="res://icon.svg" id="4_ts8jg"]
+[ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="4_jjg36"]
+[ext_resource type="PackedScene" uid="uid://baje1fv4yqxy5" path="res://UI/notice_board_button.tscn" id="5_2w8ck"]
 
-[node name="GameWindow" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbmwt"]
+atlas = ExtResource("4_jjg36")
+region = Rect2(812, 319, 1087, 510)
+
+[node name="MainShop" type="Node2D"]
+script = ExtResource("1_1y7xo")
 
 [node name="grid" type="Node2D" parent="."]
 script = ExtResource("1_8rfly")
@@ -39,12 +46,18 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_constants/margin_top = 125
 
-[node name="StoreEntry" type="Sprite2D" parent="."]
-position = Vector2(347, 67)
-scale = Vector2(1.51562, 1)
-texture = ExtResource("4_ts8jg")
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="NoticeBoard" type="Sprite2D" parent="."]
-position = Vector2(598, 31)
-scale = Vector2(0.320312, 0.320312)
-texture = ExtResource("4_ts8jg")
+[node name="NoticeBoardButton" parent="CanvasLayer" instance=ExtResource("5_2w8ck")]
+
+[node name="StoreEntry" type="Sprite2D" parent="."]
+position = Vector2(372, 88)
+scale = Vector2(0.35, 0.35)
+texture = SubResource("AtlasTexture_pbmwt")
+
+[connection signal="OpenNoticeBoard" from="CanvasLayer/NoticeBoardButton" to="." method="openNoticeBoard"]

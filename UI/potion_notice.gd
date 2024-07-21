@@ -10,28 +10,30 @@ extends MarginContainer
 @onready var pink_container = $MarginContainer/VBoxContainer/RequiresContainer/PinkContainer
 @onready var pink_count = $MarginContainer/VBoxContainer/RequiresContainer/PinkContainer/PinkCount
 @onready var due_date = $MarginContainer/VBoxContainer/DueDate
+@onready var payout = %Payout
 
 var quest = {}
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#determine how many potions will be required
 	var requiredPotions: Array = []
 	if Global.coins > 3000:
-		requiredPotions = pick_rand_number(range(5), 4)
-		pass
+		requiredPotions = pick_rand_number(range(5), randi_range(2,4))
+		quest["coins"]= calcCost(requiredPotions, 70)
 	elif Global.coins > 1500:
-		requiredPotions = pick_rand_number(range(5), 4)
-		pass
+		requiredPotions = pick_rand_number(range(5), randi_range(1,4))
+		quest["coins"]= calcCost(requiredPotions, 65)
 	elif Global.coins > 1000:
-		requiredPotions = pick_rand_number(range(5), 3)
-		pass
+		requiredPotions = pick_rand_number(range(5), randi_range(1,3))
+		quest["coins"]= calcCost(requiredPotions, 50)
 	elif Global.coins > 500:
-		requiredPotions = pick_rand_number(range(5), 2)
-		pass
+		requiredPotions = pick_rand_number(range(5), randi_range(1,2))
+		quest["coins"]= calcCost(requiredPotions, 35)
 	else:
 		requiredPotions = pick_rand_number(range(5), 1)
-		pass
+		quest["coins"]= calcCost(requiredPotions, 25)
+		
+	payout.text = str(quest["coins"])	
 	quest["days"] =  randi_range(2,10)
 	due_date.text = "Due in "+str(quest["days"])+" days"
 	
@@ -61,7 +63,10 @@ func _ready():
 	#TODO determine if we need special items	
 	print(quest)
 	#check if you have the replace upgrade
-	
+
+func calcCost(ingrediants: Array, price: int):
+	return ingrediants.size() * price
+	pass
 
 func pick_rand_number(list: Array, amount: int) -> Array:
 	randomize()
@@ -77,6 +82,8 @@ func pick_rand_number(list: Array, amount: int) -> Array:
 
 func acceptQuest():
 	#push the requiredIngrediants and remove the items in the board
+	if QuestManager.addQuest(quest):
+		queue_free()
 	pass
 	
 func closeQuest():

@@ -6,7 +6,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vrwxp"]
 atlas = ExtResource("1_fjrp3")
-region = Rect2(803, 183, 160, 161)
+region = Rect2(803, 162, 152, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwxeq"]
 atlas = ExtResource("1_fjrp3")
@@ -46,9 +46,9 @@ script = ExtResource("1_debrp")
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
 texture = SubResource("AtlasTexture_vrwxp")
-patch_margin_left = 15
+patch_margin_left = 12
 patch_margin_top = 14
-patch_margin_right = 12
+patch_margin_right = 14
 patch_margin_bottom = 11
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

@@ -191,3 +191,4 @@ func fillEmpty():
 			if potions[w][h] == null:
 				initPotion(w, h, true)
 	pass
+

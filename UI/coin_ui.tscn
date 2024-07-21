@@ -6,7 +6,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tpfx5"]
 atlas = ExtResource("1_r6sbb")
-region = Rect2(803, 183, 160, 161)
+region = Rect2(803, 162, 152, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ia1vf"]
 atlas = ExtResource("1_r6sbb")
@@ -38,9 +38,9 @@ theme_override_constants/margin_bottom = 10
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_tpfx5")
-patch_margin_left = 15
+patch_margin_left = 12
 patch_margin_top = 14
-patch_margin_right = 12
+patch_margin_right = 14
 patch_margin_bottom = 11
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]

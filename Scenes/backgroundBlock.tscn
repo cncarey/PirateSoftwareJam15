@@ -10,5 +10,5 @@ script = ExtResource("1_tkvci")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_1k25d")
 hframes = 16
-vframes = 8
+vframes = 6
 frame = 16
