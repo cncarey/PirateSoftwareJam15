@@ -15,7 +15,10 @@ func _ready():
 		ni.quest = q
 		
 		grid_container.add_child(ni)
-		ni.connect("selectedItem", selectedItem)
+		if q.has("accepted"):
+			ni.modulate = Color(1,1,1,0)
+		else:
+			ni.connect("selectedItem", selectedItem)
 		
 	pass # Replace with function body.
 
@@ -37,6 +40,9 @@ func closeNotice():
 
 var currentOpenNotice = null
 func selectedItem(selected, q):
+	if q.has("accepted"): return
+	
 	currentOpenNotice = selected
+	q["accepted"] = true
 	noticeBoardSelected.emit(selected, q)
 	pass

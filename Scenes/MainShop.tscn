@@ -55,8 +55,13 @@ grow_vertical = 2
 
 [node name="NoticeBoardButton" parent="CanvasLayer" instance=ExtResource("5_2w8ck")]
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-4, -2)
+color = Color(1, 1, 0.894118, 1)
+polygon = PackedVector2Array(183, 207, 642, 213, 645, 2, 185, 2, 184, 22, 331, 26, 436, 31, 428, 81, 465, 81, 476, 38, 522, 43, 511, 123, 461, 120, 467, 80, 429, 80, 422, 113, 376, 115, 384, 25, 331, 26, 332, 156, 253, 155, 253, 23, 185, 21)
+
 [node name="StoreEntry" type="Sprite2D" parent="."]
-position = Vector2(372, 88)
+position = Vector2(372, 90)
 scale = Vector2(0.35, 0.35)
 texture = SubResource("AtlasTexture_pbmwt")
 

@@ -7,9 +7,11 @@ var todaysQuests : Array = []
 	set (value):
 		curTurn = maxi(0, value)
 		curTurn_changed.emit(curTurn)
+		if curTurn >= maxTurn:
+			maxedOutTurnForDay.emit()
 	get:
 		return curTurn
-@export var maxTurn = 0:
+@export var maxTurn = 5:
 	set (value):
 		maxTurn = maxi(0, value)
 		maxTurn_changed.emit(maxTurn)
@@ -18,6 +20,9 @@ var todaysQuests : Array = []
 @export var curDay = 1:
 	set (value):
 		curDay = maxi(0, value)
+		updateQuestDays()
+		setTodaysQuests()
+		curTurn = 0
 		curDay_changed.emit(curDay)
 	get:
 		return curDay
@@ -36,8 +41,10 @@ var todaysQuests : Array = []
 		return maxBoardCount
 
 signal curTurn_changed(t)
+signal maxedOutTurnForDay()
 signal maxTurn_changed(mt)
 signal curDay_changed(d)
+
 signal questMaxCount_changed(q)
 signal maxBoardCount_changed(b)
 signal quests_changed(q)

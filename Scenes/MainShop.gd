@@ -9,6 +9,7 @@ var potionNotice = preload("res://UI/potion_notice.tscn")
 
 func _ready():
 	QuestManager.setTodaysQuests()
+	QuestManager.maxedOutTurnForDay.connect(onEndOfDay)
 	pass # Replace with function body.
 
 func onDayEnd():
@@ -36,10 +37,17 @@ func noticeBoardSelected(selectedNotice, quest):
 	n.connect("acceptedNotice", acceptedNotice)
 	pass
 func closedNotice():
-	
+	currentOpenNotice = null
 	pass
 	
 func acceptedNotice():
 	if currentOpenNotice != null:
 		currentOpenNotice.modulate = Color(1,1,1,0)
+	pass
+
+func onEndOfDay():
+	#TODO pop up the options for the end of day
+	#	- users can select upgrades
+	#	- user can reset the board for a fee
+	QuestManager.curDay += 1
 	pass
