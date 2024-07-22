@@ -4,7 +4,8 @@ var noticeItem = preload("res://UI/notice_board_item.tscn")
 var potionNotice = preload("res://UI/potion_notice.tscn")
 @onready var grid_container = $MarginContainer/VBoxContainer/GridContainer
 
-signal  closeNoticeBoard()
+signal closeNoticeBoard()
+signal noticeBoardSelected(s, q)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for q in QuestManager.todaysQuests:
@@ -26,6 +27,16 @@ func onClose():
 	queue_free()
 	pass
 
-func selectedItem(q):
-	print(q)
+func acceptedNotice():
+	print(currentOpenNotice)
+	pass
+
+func closeNotice():
+	currentOpenNotice = null
+	pass
+
+var currentOpenNotice = null
+func selectedItem(selected, q):
+	currentOpenNotice = selected
+	noticeBoardSelected.emit(selected, q)
 	pass

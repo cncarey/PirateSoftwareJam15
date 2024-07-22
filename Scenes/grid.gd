@@ -13,6 +13,7 @@ var curState
 var potion = preload("res://Scenes/potion.tscn")
 var backGround = preload("res://Scenes/backgroundBlock.tscn")
 var potions = []
+var currentMatches = []
 
 var startTouch = Vector2(0,0)
 var endTouch = Vector2(0,0)
@@ -201,6 +202,8 @@ func destroyMatched():
 		collapseColumns()
 	else:
 		swapBack()
+		
+	currentMatches.clear()
 
 func collapseColumns():
 	for w in width:
@@ -233,3 +236,4 @@ func afterFillEmpty():
 					return
 	curState = moving
 	moveChecked = false
+	QuestManager.curTurn += 1 

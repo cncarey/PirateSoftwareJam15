@@ -5,7 +5,8 @@ extends Node2D
 
 
 var noticeBoard = preload("res://UI/notice_board.tscn")
-# Called when the node enters the scene tree for the first time.
+var potionNotice = preload("res://UI/potion_notice.tscn")
+
 func _ready():
 	QuestManager.setTodaysQuests()
 	pass # Replace with function body.
@@ -19,8 +20,26 @@ func openNoticeBoard():
 	var nb = noticeBoard.instantiate()
 	center_container.add_child(nb)
 	nb.connect("closeNoticeBoard", closeNoticeBoard)
+	nb.connect("noticeBoardSelected", noticeBoardSelected)
 	pass # Replace with function body.
 
 func closeNoticeBoard():
 	notice_board_button.closeNoticeBoard()
+	pass
+
+var currentOpenNotice = null	
+func noticeBoardSelected(selectedNotice, quest):
+	currentOpenNotice = selectedNotice
+	var n = potionNotice.instantiate()
+	n.quest = quest
+	center_container.add_child(n)
+	n.connect("acceptedNotice", acceptedNotice)
+	pass
+func closedNotice():
+	
+	pass
+	
+func acceptedNotice():
+	if currentOpenNotice != null:
+		currentOpenNotice.modulate = Color(1,1,1,0)
 	pass

@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="1_r6sbb"]
 [ext_resource type="LabelSettings" uid="uid://c5g4525m0w8a7" path="res://Assets/Fonts/default_label.tres" id="3_t1vke"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tpfx5"]
-atlas = ExtResource("1_r6sbb")
-region = Rect2(803, 162, 152, 150)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ia1vf"]
 atlas = ExtResource("1_r6sbb")
 region = Rect2(1280, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpfx5"]
+atlas = ExtResource("1_r6sbb")
+region = Rect2(803, 162, 152, 150)
 
 [node name="CoinUI" type="Control"]
 layout_mode = 3
@@ -22,12 +22,27 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_48uo7")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 188.0
+offset_bottom = 80.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-offset_left = 143.0
-offset_top = 42.0
-offset_right = 160.0
-offset_bottom = 118.0
+
+[node name="CoinIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+z_index = 100
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_ia1vf")
+expand_mode = 5
+stretch_mode = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_constants/margin_left = -30
@@ -35,7 +50,7 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = -5
 theme_override_constants/margin_bottom = 10
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/MarginContainer2/MarginContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_tpfx5")
 patch_margin_left = 12
@@ -43,23 +58,37 @@ patch_margin_top = 14
 patch_margin_right = 14
 patch_margin_bottom = 11
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer2/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 19
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 19
 
-[node name="CoinCount" type="Label" parent="MarginContainer/MarginContainer"]
+[node name="CoinCount" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer2/MarginContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "00"
 label_settings = ExtResource("3_t1vke")
 horizontal_alignment = 2
 
-[node name="CoinIcon" type="TextureRect" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
-offset_right = 160.0
-offset_bottom = 160.0
-texture = SubResource("AtlasTexture_ia1vf")
-expand_mode = 1
+theme_override_constants/margin_top = -19
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -8
+
+[node name="Move" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Moves"
+label_settings = ExtResource("3_t1vke")
+horizontal_alignment = 2
+
+[node name="MoveCount" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/15"
+label_settings = ExtResource("3_t1vke")
+horizontal_alignment = 2

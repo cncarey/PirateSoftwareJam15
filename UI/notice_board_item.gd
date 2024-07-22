@@ -10,7 +10,7 @@ extends MarginContainer
 @export var sealPosition: int = 0
 @export var sealColor: int = 0
 
-signal selectedItem(q)
+signal selectedItem(s, q)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	match(sealPosition):
@@ -32,5 +32,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func onPressed():
-	selectedItem.emit(quest)
+	selectedItem.emit(self, quest)
 	pass

@@ -2,6 +2,26 @@ extends Node
 
 var quests : Array = []
 var todaysQuests : Array = []
+
+@export var curTurn = 0:
+	set (value):
+		curTurn = maxi(0, value)
+		curTurn_changed.emit(curTurn)
+	get:
+		return curTurn
+@export var maxTurn = 0:
+	set (value):
+		maxTurn = maxi(0, value)
+		maxTurn_changed.emit(maxTurn)
+	get:
+		return maxTurn
+@export var curDay = 1:
+	set (value):
+		curDay = maxi(0, value)
+		curDay_changed.emit(curDay)
+	get:
+		return curDay
+
 @export var questMaxCount = 2 : 
 	set(value):
 		questMaxCount = maxi(2, value)
@@ -15,6 +35,9 @@ var todaysQuests : Array = []
 	get:
 		return maxBoardCount
 
+signal curTurn_changed(t)
+signal maxTurn_changed(mt)
+signal curDay_changed(d)
 signal questMaxCount_changed(q)
 signal maxBoardCount_changed(b)
 signal quests_changed(q)
@@ -66,7 +89,7 @@ func filterLate(q):
 		return false
 
 func setTodaysQuests():
-	todaysQuests = []
+	todaysQuests.clear()
 	
 	for x in range(maxBoardCount):
 		var quest = {}
@@ -101,7 +124,6 @@ func setTodaysQuests():
 		#TODO determine if we need special items	
 		todaysQuests.append(quest)
 		
-	print(todaysQuests)
 
 func calcCost(ingrediants: Array, price: int):
 	return ingrediants.size() * price
