@@ -1,0 +1,243 @@
+[gd_scene load_steps=18 format=3 uid="uid://83sn8xoxtvx5"]
+
+[ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="1_7hwbw"]
+[ext_resource type="Script" path="res://UI/quest_item.gd" id="1_fevqc"]
+[ext_resource type="LabelSettings" uid="uid://c5g4525m0w8a7" path="res://Assets/Fonts/default_label.tres" id="2_51r6n"]
+[ext_resource type="Shader" path="res://Effects/Shanders/shine.gdshader" id="4_kah31"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1c1u"]
+atlas = ExtResource("1_7hwbw")
+region = Rect2(803, 162, 152, 150)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iyn3x"]
+resource_local_to_scene = true
+shader = ExtResource("4_kah31")
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.05
+shader_parameter/angle = 4.18879
+shader_parameter/speed = 0.8
+shader_parameter/wait_cycles = 1.0
+shader_parameter/start = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boat6"]
+atlas = ExtResource("1_7hwbw")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cc66u"]
+resource_local_to_scene = true
+shader = ExtResource("4_kah31")
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.05
+shader_parameter/angle = 4.18879
+shader_parameter/speed = 0.8
+shader_parameter/wait_cycles = 1.0
+shader_parameter/start = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2ssr"]
+atlas = ExtResource("1_7hwbw")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jopcc"]
+resource_local_to_scene = true
+shader = ExtResource("4_kah31")
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.05
+shader_parameter/angle = 4.18879
+shader_parameter/speed = 0.8
+shader_parameter/wait_cycles = 1.0
+shader_parameter/start = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq704"]
+atlas = ExtResource("1_7hwbw")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_byol7"]
+resource_local_to_scene = true
+shader = ExtResource("4_kah31")
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.05
+shader_parameter/angle = 4.18879
+shader_parameter/speed = 0.8
+shader_parameter/wait_cycles = 1.0
+shader_parameter/start = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uy7ix"]
+atlas = ExtResource("1_7hwbw")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hktxp"]
+resource_local_to_scene = true
+shader = ExtResource("4_kah31")
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.05
+shader_parameter/angle = 4.18879
+shader_parameter/speed = 0.8
+shader_parameter/wait_cycles = 1.0
+shader_parameter/start = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yliy"]
+atlas = ExtResource("1_7hwbw")
+region = Rect2(650, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwl7b"]
+atlas = ExtResource("1_7hwbw")
+region = Rect2(1330, 209, 63, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl1ie"]
+atlas = ExtResource("1_7hwbw")
+region = Rect2(1027, 221, 69, 50)
+
+[node name="QuestItem" type="MarginContainer"]
+script = ExtResource("1_fevqc")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_f1c1u")
+patch_margin_left = 12
+patch_margin_top = 14
+patch_margin_right = 14
+patch_margin_bottom = 11
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 11
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_bottom = 7
+
+[node name="DaysLeft" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "x Days Left"
+label_settings = ExtResource("2_51r6n")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PurpleContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PurpleIcon" type="Sprite2D" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PurpleContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_iyn3x")
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_boat6")
+
+[node name="PurpleCount" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PurpleContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "0"
+label_settings = ExtResource("2_51r6n")
+
+[node name="BlueContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BlueIcon" type="Sprite2D" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/BlueContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_cc66u")
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_v2ssr")
+
+[node name="BlueCount" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/BlueContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_51r6n")
+
+[node name="OrangeContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OrangeIcon" type="Sprite2D" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/OrangeContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_jopcc")
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_pq704")
+
+[node name="OrangeCount" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/OrangeContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_51r6n")
+
+[node name="GreenContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GreenIcon" type="Sprite2D" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/GreenContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_byol7")
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_uy7ix")
+
+[node name="GreenCount" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/GreenContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_51r6n")
+
+[node name="PinkContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PinkIcon" type="Sprite2D" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PinkContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_hktxp")
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_4yliy")
+
+[node name="PinkCount" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PinkContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_51r6n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 5
+
+[node name="CompleteButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = SubResource("AtlasTexture_gwl7b")
+stretch_mode = 0
+
+[node name="RemoveButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = SubResource("AtlasTexture_jl1ie")
+stretch_mode = 0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CompleteButton" to="." method="onComplete"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/RemoveButton" to="." method="onRemove"]

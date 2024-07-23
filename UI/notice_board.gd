@@ -1,7 +1,7 @@
 extends MarginContainer
 
 var noticeItem = preload("res://UI/notice_board_item.tscn")
-var potionNotice = preload("res://UI/potion_notice.tscn")
+
 @onready var grid_container = $MarginContainer/VBoxContainer/GridContainer
 
 signal closeNoticeBoard()
@@ -43,6 +43,5 @@ func selectedItem(selected, q):
 	if q.has("accepted"): return
 	
 	currentOpenNotice = selected
-	q["accepted"] = true
 	noticeBoardSelected.emit(selected, q)
 	pass

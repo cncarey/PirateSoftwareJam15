@@ -29,6 +29,7 @@ region = Rect2(650, 0, 160, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pufue"]
 atlas = ExtResource("1_f7ras")
+region = Rect2(1278, 0, 160, 160)
 
 [node name="PotionNotice" type="MarginContainer"]
 offset_right = 125.0

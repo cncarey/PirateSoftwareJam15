@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1sm4f0hdd0g6"]
+[gd_scene load_steps=10 format=3 uid="uid://c1sm4f0hdd0g6"]
 
 [ext_resource type="Script" path="res://Scenes/MainShop.gd" id="1_1y7xo"]
 [ext_resource type="Script" path="res://Scenes/grid.gd" id="1_8rfly"]
@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://ccaa434x3bi5y" path="res://UI/coin_ui.tscn" id="3_8k7vs"]
 [ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="4_jjg36"]
 [ext_resource type="PackedScene" uid="uid://baje1fv4yqxy5" path="res://UI/notice_board_button.tscn" id="5_2w8ck"]
+[ext_resource type="PackedScene" uid="uid://cb78fq8fn1mh4" path="res://UI/quests_ui.tscn" id="7_xfug3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_futqo"]
+atlas = ExtResource("4_jjg36")
+region = Rect2(1932.6, 333.14, 621, 624)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbmwt"]
 atlas = ExtResource("4_jjg36")
@@ -14,11 +19,21 @@ region = Rect2(812, 319, 1087, 510)
 [node name="MainShop" type="Node2D"]
 script = ExtResource("1_1y7xo")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 700.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.449129, 0.00249202, 0.93435, 1)
+
 [node name="grid" type="Node2D" parent="."]
 script = ExtResource("1_8rfly")
 width = 6
 height = 5
-xStart = 160
+xStart = 190
 yStart = 570
 xOffset = 80
 yOffeset = 80
@@ -26,25 +41,28 @@ yOffeset = 80
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CoinUI" parent="CanvasLayer" instance=ExtResource("3_8k7vs")]
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 25.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 55.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -92.0
+offset_top = -59.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="StockUI" parent="CanvasLayer" instance=ExtResource("1_xwje5")]
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 94.0
-offset_bottom = 307.0
-size_flags_horizontal = 4
-size_flags_vertical = 3
-theme_override_constants/margin_top = 125
+[node name="Button" type="Button" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+text = "End Day &
+Restock"
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -54,6 +72,32 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="NoticeBoardButton" parent="CanvasLayer" instance=ExtResource("5_2w8ck")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -151.0
+offset_right = 89.0
+offset_bottom = 151.0
+grow_vertical = 2
+
+[node name="StockUI" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_xwje5")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="QuestsUI" parent="CanvasLayer/VBoxContainer" instance=ExtResource("7_xfug3")]
+layout_mode = 2
+
+[node name="Clouds" type="Sprite2D" parent="."]
+position = Vector2(383, 70)
+scale = Vector2(0.518519, 0.170873)
+texture = SubResource("AtlasTexture_futqo")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(-4, -2)

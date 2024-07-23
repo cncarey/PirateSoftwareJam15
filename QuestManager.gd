@@ -47,8 +47,8 @@ signal curDay_changed(d)
 
 signal questMaxCount_changed(q)
 signal maxBoardCount_changed(b)
-signal quests_changed(q)
-signal QuestAccepted()
+signal quests_changed(qs)
+signal QuestAccepted(q, c)
 signal QuestClosed()
 signal QuestReplaced()
 
@@ -58,9 +58,9 @@ func _ready():
 
 func addQuest(q) -> bool:
 	if canAddQuest():
+		q["accepted"] = true
 		quests.append(q)
-		QuestAccepted.emit()
-		print(quests)
+		QuestAccepted.emit(q, quests.size())
 		return true
 	else:
 		return false
@@ -71,12 +71,12 @@ func canAddQuest():
 	
 func completeQuest(q):
 	#add to the players coins
+	Global.coins += q["coins"]
 	removeQuest(q)
-	pass
 	
 func removeQuest(q):
 	quests.erase(q)
-	pass
+	quests_changed.emit(quests)
 	
 func updateQuestDays():
 	for i in quests:
@@ -87,7 +87,9 @@ func updateQuestDays():
 				i["curDay"] = 1
 	var to_remove = quests.filter(filterLate)
 	for j in to_remove:
-		removeQuest(j)
+		quests.erase(j)
+	
+	quests_changed.emit(quests)
 		
 func filterLate(q):
 	if "curDay" in q && "days" in q:
@@ -107,10 +109,10 @@ func setTodaysQuests():
 		elif Global.coins > 1500:
 			requiredPotions = pick_rand_number(range(5), randi_range(1,4))
 			quest["coins"]= calcCost(requiredPotions, 65)
-		elif Global.coins > 1000:
+		elif Global.coins > 700:
 			requiredPotions = pick_rand_number(range(5), randi_range(1,3))
 			quest["coins"]= calcCost(requiredPotions, 50)
-		elif Global.coins > 500:
+		elif Global.coins > 200:
 			requiredPotions = pick_rand_number(range(5), randi_range(1,2))
 			quest["coins"]= calcCost(requiredPotions, 35)
 		else:
@@ -118,6 +120,7 @@ func setTodaysQuests():
 			quest["coins"]= calcCost(requiredPotions, 25)
 		
 		quest["days"] =  randi_range(2,10)
+		quest["daysLeft"] = quest["days"]
 		quest["sealPosition"] = randi_range(0, 2)
 		quest["sealColor"] = randi_range(0, 2)
 		#show the reqs potions
@@ -131,10 +134,8 @@ func setTodaysQuests():
 		#TODO determine if we need special items	
 		todaysQuests.append(quest)
 		
-
 func calcCost(ingrediants: Array, price: int):
 	return ingrediants.size() * price
-	pass
 
 func pick_rand_number(list: Array, amount: int) -> Array:
 	randomize()
