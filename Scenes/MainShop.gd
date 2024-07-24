@@ -29,13 +29,19 @@ func closeNoticeBoard():
 	notice_board_button.closeNoticeBoard()
 	pass
 
-var currentOpenNotice = null	
+var currentOpenNotice = null
+var openPotionNotice = null
 func noticeBoardSelected(selectedNotice, quest):
+	if openPotionNotice != null:
+		openPotionNotice.queue_free()
+		openPotionNotice = null
+		
 	currentOpenNotice = selectedNotice
 	var n = potionNotice.instantiate()
 	n.quest = quest
 	center_container.add_child(n)
 	n.connect("acceptedNotice", acceptedNotice)
+	openPotionNotice = n
 	pass
 func closedNotice():
 	currentOpenNotice = null
