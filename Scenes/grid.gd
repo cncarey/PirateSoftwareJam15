@@ -158,7 +158,7 @@ func translateMove(start: Vector2, end: Vector2):
 			swapPotions(start.x, start.y, Vector2(0,-1))	
 
 func _process(delta):
-	if curState == moving:
+	if curState == moving && !QuestManager.isFrontEnabled:
 		isTouched()
 	
 func findMatches():

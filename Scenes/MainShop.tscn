@@ -7,18 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="4_jjg36"]
 [ext_resource type="PackedScene" uid="uid://baje1fv4yqxy5" path="res://UI/notice_board_button.tscn" id="5_2w8ck"]
 [ext_resource type="PackedScene" uid="uid://cb78fq8fn1mh4" path="res://UI/quests_ui.tscn" id="7_xfug3"]
+[ext_resource type="PackedScene" uid="uid://lcdx4tcivkn8" path="res://Scenes/font_door.tscn" id="8_trp1m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_35eem"]
 atlas = ExtResource("4_jjg36")
 region = Rect2(843, 48, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_futqo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxwal"]
 atlas = ExtResource("4_jjg36")
-region = Rect2(960.5, 165.5, 315, 315)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pbmwt"]
-atlas = ExtResource("4_jjg36")
-region = Rect2(400, 162, 555, 241)
+region = Rect2(351.992, 242.046, 16.5926, 128.296)
 
 [node name="MainShop" type="Node2D"]
 script = ExtResource("1_1y7xo")
@@ -49,10 +46,10 @@ yOffeset = 80
 [node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
 
 [node name="CoinUI" parent="CanvasLayer" instance=ExtResource("3_8k7vs")]
-offset_left = 25.0
-offset_top = 20.0
-offset_right = 60.0
-offset_bottom = 55.0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = 55.0
+offset_bottom = 50.0
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -104,20 +101,17 @@ text = "End Day &
 Restock"
 icon = SubResource("AtlasTexture_35eem")
 
-[node name="Clouds" type="Sprite2D" parent="."]
-position = Vector2(432.5, 84)
-scale = Vector2(1.23492, 0.47619)
-texture = SubResource("AtlasTexture_futqo")
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 317.8
+offset_top = 6.0
+offset_right = 393.8
+offset_bottom = 177.0
+texture_normal = SubResource("AtlasTexture_uxwal")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(-4, -2)
-color = Color(1, 1, 0.894118, 1)
-polygon = PackedVector2Array(183, 207, 642, 213, 645, 2, 185, 2, 184, 22, 337, 34, 454, 40, 451, 82, 497, 82, 499, 48, 548, 47, 534, 135, 484, 131, 498, 82, 448, 88, 438, 129, 391, 128, 403, 40, 331, 26, 347, 46, 347, 90, 261, 92, 268, 27, 185, 21)
-
-[node name="StoreEntry" type="Sprite2D" parent="."]
-position = Vector2(387, 97)
-scale = Vector2(0.75, 0.75)
-texture = SubResource("AtlasTexture_pbmwt")
+[node name="FrontDoor" parent="." instance=ExtResource("8_trp1m")]
+position = Vector2(189, 3)
+scale = Vector2(0.7, 0.7)
 
 [connection signal="OpenNoticeBoard" from="CanvasLayer/NoticeBoardButton" to="." method="openNoticeBoard"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Restock" to="." method="_on_restock_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="onStringPulled"]

@@ -39,6 +39,15 @@ var todaysQuests : Array = []
 		maxBoardCount_changed.emit(maxBoardCount)
 	get:
 		return maxBoardCount
+		
+@export var isFrontEnabled = false:
+	set(value):
+		isFrontEnabled = value
+		#when we set up upgrade check if we ignore this
+		curTurn += 1
+		isFrontEnabled_change.emit(isFrontEnabled)
+	get:
+		return isFrontEnabled
 
 signal curTurn_changed(t)
 signal maxedOutTurnForDay()
@@ -47,10 +56,13 @@ signal curDay_changed(d)
 
 signal questMaxCount_changed(q)
 signal maxBoardCount_changed(b)
+signal isFrontEnabled_change(f)
+
 signal quests_changed(qs)
 signal QuestAccepted(q, c)
 signal QuestClosed()
 signal QuestReplaced()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

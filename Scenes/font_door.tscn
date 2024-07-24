@@ -1,0 +1,158 @@
+[gd_scene load_steps=15 format=3 uid="uid://lcdx4tcivkn8"]
+
+[ext_resource type="Script" path="res://Scenes/font_door.gd" id="1_f3q7x"]
+[ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="1_f6d6i"]
+[ext_resource type="Texture2D" uid="uid://c3a63kk836ggx" path="res://icon.svg" id="2_4pkxa"]
+
+[sub_resource type="Animation" id="Animation_u0uev"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(403, 115)]
+}
+
+[sub_resource type="Animation" id="Animation_15605"]
+resource_name = "investigator"
+length = 32.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7.9, 10.1, 18.1, 20.1, 28, 29, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(403, 115), Vector2(338, 115), Vector2(338, 115), Vector2(245, 115), Vector2(245, 115), Vector2(120, 115), Vector2(120, 115), Vector2(120, 103)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(30, 32),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"sendFine"
+}, {
+"args": [],
+"method": &"resetInvestigator"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ih13k"]
+_data = {
+"RESET": SubResource("Animation_u0uev"),
+"investigator": SubResource("Animation_15605")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_futqo"]
+atlas = ExtResource("1_f6d6i")
+region = Rect2(960.5, 165.5, 315, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbmwt"]
+atlas = ExtResource("1_f6d6i")
+region = Rect2(400, 162, 555, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekj7x"]
+atlas = ExtResource("1_f6d6i")
+region = Rect2(160, 400, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llmow"]
+atlas = ExtResource("1_f6d6i")
+region = Rect2(160, 400, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0gct"]
+atlas = ExtResource("1_f6d6i")
+region = Rect2(240, 400, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgxtt"]
+atlas = ExtResource("1_f6d6i")
+region = Rect2(160, 400, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snaan"]
+atlas = ExtResource("1_f6d6i")
+region = Rect2(320, 400, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gmdna"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekj7x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llmow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0gct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgxtt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snaan")
+}],
+"loop": true,
+"name": &"ring",
+"speed": 8.0
+}]
+
+[node name="FontDoor" type="Node2D"]
+script = ExtResource("1_f3q7x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ih13k")
+}
+
+[node name="Clouds" type="Sprite2D" parent="."]
+position = Vector2(257.625, 86.375)
+scale = Vector2(1.23492, 0.47619)
+texture = SubResource("AtlasTexture_futqo")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(403, 115)
+scale = Vector2(0.328125, 1)
+texture = ExtResource("2_4pkxa")
+
+[node name="Wall" type="Polygon2D" parent="."]
+color = Color(1, 1, 0.894118, 1)
+polygon = PackedVector2Array(1, 0, 1, 193, 116, 193, 117, 86, 87, 82, 89, 41, 137, 26, 165, 46, 164, 77, 118, 83, 116, 193, 642, 193, 644, -4, 341, -4, 343, 47, 371, 47, 357, 141, 304, 137, 320, 42, 346, 48, 350, -4, 240, -3, 244, 42, 275, 42, 263, 129, 210, 129, 222, 40, 244, 41, 247, -4)
+
+[node name="StoreEntry" type="Sprite2D" parent="."]
+position = Vector2(212.125, 99.375)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_pbmwt")
+
+[node name="Bell" type="AnimatedSprite2D" parent="."]
+position = Vector2(57, 37)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_gmdna")
+
+[node name="Shade" type="Polygon2D" parent="."]
+skew = -1.56905
+color = Color(0.419608, 0.419608, 0.419608, 0.713726)
+polygon = PackedVector2Array(-2, -1, -3, 193, 644, 186, 647, -5)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="startInvestigator"]

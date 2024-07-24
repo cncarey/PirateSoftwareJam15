@@ -3,6 +3,7 @@ extends Node2D
 @onready var notice_board_button = $CanvasLayer/NoticeBoardButton
 @onready var center_container = $CanvasLayer/CenterContainer
 @onready var grid = $grid
+@onready var front_door = $FrontDoor
 
 
 var noticeBoard = preload("res://UI/notice_board.tscn")
@@ -63,4 +64,9 @@ func onEndOfDay():
 func _on_restock_pressed():
 	onEndOfDay()
 	grid.clearBoard()
+	pass # Replace with function body.
+
+
+func onStringPulled():
+	front_door.onStringPulled()
 	pass # Replace with function body.
