@@ -20,7 +20,11 @@ extends MarginContainer
 var quest = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	days_left.text = str(quest["daysLeft"])+" days left"
+	if quest.has("days")&& quest.has("curDay"):
+		var daysLeft = quest["days"] - quest["curDay"]
+		days_left.text = str(daysLeft)+" days left"
+	else:	
+		days_left.text = str(quest["daysLeft"])+" days left"
 	
 	#show the reqs potions
 	if quest.has(0):

@@ -6,11 +6,11 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ia1vf"]
 atlas = ExtResource("1_r6sbb")
-region = Rect2(1280, 0, 160, 160)
+region = Rect2(640, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tpfx5"]
 atlas = ExtResource("1_r6sbb")
-region = Rect2(803, 162, 152, 150)
+region = Rect2(400, 76, 77, 80)
 
 [node name="CoinUI" type="Control"]
 layout_mode = 3
@@ -61,9 +61,9 @@ patch_margin_bottom = 11
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer2/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 19
+theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 19
+theme_override_constants/margin_bottom = 12
 
 [node name="CoinCount" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer2/MarginContainer/MarginContainer"]
 unique_name_in_owner = true
@@ -76,30 +76,37 @@ horizontal_alignment = 2
 layout_mode = 2
 theme_override_constants/margin_top = -19
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = -8
 
-[node name="Move" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Day" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Days"
+label_settings = ExtResource("3_t1vke")
+
+[node name="DayCount" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("3_t1vke")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Move" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Moves"
 label_settings = ExtResource("3_t1vke")
 horizontal_alignment = 2
 
-[node name="MoveCount" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="MoveCount" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0/15"
 label_settings = ExtResource("3_t1vke")
 horizontal_alignment = 2
-
-[node name="Day" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Days"
-label_settings = ExtResource("3_t1vke")
-
-[node name="DayCount" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "0"
-label_settings = ExtResource("3_t1vke")

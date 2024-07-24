@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dttm1gh5eoe5"]
+[gd_scene load_steps=6 format=3 uid="uid://dttm1gh5eoe5"]
 
 [ext_resource type="Script" path="res://Menus/main_menu.gd" id="1_j4y5q"]
+[ext_resource type="Texture2D" uid="uid://cd3e1ylatduft" path="res://Assets/MainMenu.png" id="2_i5141"]
 [ext_resource type="PackedScene" uid="uid://cxq44ooukv26n" path="res://Menus/Options.tscn" id="2_j0kug"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lwia"]
+atlas = ExtResource("2_i5141")
+region = Rect2(177, 107, 176, 179)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6fvcg"]
+font_size = 25
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,6 +19,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j4y5q")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_7lwia")
+expand_mode = 4
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 249.0
+offset_right = 637.0
+offset_bottom = 495.0
+texture = ExtResource("2_i5141")
+expand_mode = 3
 
 [node name="MainContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -28,7 +56,8 @@ layout_mode = 2
 
 [node name="GameTitle" type="Label" parent="MainContainer/MainContainer"]
 layout_mode = 2
-text = "Game Title"
+text = "Paid Off"
+label_settings = SubResource("LabelSettings_6fvcg")
 
 [node name="Start" type="Button" parent="MainContainer/MainContainer"]
 layout_mode = 2
@@ -41,6 +70,16 @@ text = "Options"
 [node name="Tutorial" type="Button" parent="MainContainer/MainContainer"]
 layout_mode = 2
 text = "Tutorial"
+
+[node name="GameTitle2" type="Label" parent="MainContainer/MainContainer"]
+layout_mode = 2
+text = "Every little bit
+helps
+
+
+
+"
+horizontal_alignment = 1
 
 [node name="Quit" type="Button" parent="MainContainer/MainContainer"]
 layout_mode = 2
@@ -57,6 +96,24 @@ offset_right = 185.0
 offset_bottom = 109.5
 grow_horizontal = 1
 theme_override_constants/margin_left = 50
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "Version 0.0.1"
 
 [connection signal="pressed" from="MainContainer/MainContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MainContainer/MainContainer/Options" to="." method="showOptions"]

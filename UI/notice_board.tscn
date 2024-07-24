@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_13nfe"]
 atlas = ExtResource("2_npk88")
-region = Rect2(324, 482, 308, 310)
+region = Rect2(163, 243, 151, 152)
 
 [node name="NoticeBoard" type="MarginContainer"]
 offset_right = 40.0

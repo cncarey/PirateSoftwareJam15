@@ -237,3 +237,15 @@ func afterFillEmpty():
 	curState = moving
 	moveChecked = false
 	QuestManager.curTurn += 1 
+
+func clearBoard():
+	for w in width:
+		for h in height:
+			if potions[w][h] != null:
+				potions[w][h].queue_free()
+				potions[w][h] = null
+				
+	for w in width:
+		for h in height:
+			initPotion(w, h,true)
+	pass

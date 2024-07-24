@@ -2,6 +2,7 @@ extends Node2D
 @onready var canvas_layer = $CanvasLayer
 @onready var notice_board_button = $CanvasLayer/NoticeBoardButton
 @onready var center_container = $CanvasLayer/CenterContainer
+@onready var grid = $grid
 
 
 var noticeBoard = preload("res://UI/notice_board.tscn")
@@ -51,3 +52,9 @@ func onEndOfDay():
 	#	- user can reset the board for a fee
 	QuestManager.curDay += 1
 	pass
+
+
+func _on_restock_pressed():
+	onEndOfDay()
+	grid.clearBoard()
+	pass # Replace with function body.

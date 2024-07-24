@@ -5,27 +5,27 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_krju2"]
 atlas = ExtResource("1_h53q2")
-region = Rect2(967, 159, 160, 160)
+region = Rect2(494.115, 89.9156, 67.1605, 61.6296)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s3v32"]
 atlas = ExtResource("1_h53q2")
-region = Rect2(1275, 164, 160, 160)
+region = Rect2(645.57, 90.8968, 62.5515, 63.4732)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5s6md"]
 atlas = ExtResource("1_h53q2")
-region = Rect2(1445, 172, 160, 160)
+region = Rect2(728.268, 90.9403, 66.7654, 58.9959)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_juotk"]
 atlas = ExtResource("1_h53q2")
-region = Rect2(493.869, 327.582, 140.444, 145.778)
+region = Rect2(321.071, 165.468, 78.2222, 72.8889)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n06t0"]
 atlas = ExtResource("1_h53q2")
-region = Rect2(1639.81, 29.6, 98.778, 88.889)
+region = Rect2(884.444, 83.5432, 34.3704, 29.8272)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xyugw"]
 atlas = ExtResource("1_h53q2")
-region = Rect2(986.281, 179.816, 129.333, 125.778)
+region = Rect2(494.695, 88.4666, 66.963, 64.3951)
 
 [node name="NoticeBoardItem" type="MarginContainer"]
 size_flags_horizontal = 3
@@ -79,6 +79,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/messageContainer/MarginContainer"]
 layout_mode = 2
+text = "  "
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 2

@@ -5,31 +5,31 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8iq0q"]
 atlas = ExtResource("1_f7ras")
-region = Rect2(803, 162, 152, 150)
+region = Rect2(400, 76, 77, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1emla"]
 atlas = ExtResource("1_f7ras")
-region = Rect2(0, 0, 160, 160)
+region = Rect2(0, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wfrf5"]
 atlas = ExtResource("1_f7ras")
-region = Rect2(160, 0, 160, 160)
+region = Rect2(86, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcq10"]
 atlas = ExtResource("1_f7ras")
-region = Rect2(320, 0, 160, 160)
+region = Rect2(160, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8qb55"]
 atlas = ExtResource("1_f7ras")
-region = Rect2(480, 0, 160, 160)
+region = Rect2(240, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dpux2"]
 atlas = ExtResource("1_f7ras")
-region = Rect2(650, 0, 160, 160)
+region = Rect2(320, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pufue"]
 atlas = ExtResource("1_f7ras")
-region = Rect2(1278, 0, 160, 160)
+region = Rect2(640, 0, 80, 80)
 
 [node name="PotionNotice" type="MarginContainer"]
 offset_right = 125.0

@@ -7,7 +7,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1c1u"]
 atlas = ExtResource("1_7hwbw")
-region = Rect2(803, 162, 152, 150)
+region = Rect2(400, 76, 77, 80)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iyn3x"]
 resource_local_to_scene = true
@@ -21,7 +21,7 @@ shader_parameter/start = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_boat6"]
 atlas = ExtResource("1_7hwbw")
-region = Rect2(0, 0, 160, 160)
+region = Rect2(0, 0, 80, 80)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cc66u"]
 resource_local_to_scene = true
@@ -35,7 +35,7 @@ shader_parameter/start = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v2ssr"]
 atlas = ExtResource("1_7hwbw")
-region = Rect2(160, 0, 160, 160)
+region = Rect2(86, 0, 80, 80)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jopcc"]
 resource_local_to_scene = true
@@ -49,7 +49,7 @@ shader_parameter/start = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pq704"]
 atlas = ExtResource("1_7hwbw")
-region = Rect2(320, 0, 160, 160)
+region = Rect2(160, 0, 80, 80)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_byol7"]
 resource_local_to_scene = true
@@ -63,7 +63,7 @@ shader_parameter/start = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uy7ix"]
 atlas = ExtResource("1_7hwbw")
-region = Rect2(480, 0, 160, 160)
+region = Rect2(240, 0, 80, 80)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hktxp"]
 resource_local_to_scene = true
@@ -77,15 +77,15 @@ shader_parameter/start = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4yliy"]
 atlas = ExtResource("1_7hwbw")
-region = Rect2(650, 0, 160, 160)
+region = Rect2(320, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gwl7b"]
 atlas = ExtResource("1_7hwbw")
-region = Rect2(1330, 209, 63, 57)
+region = Rect2(799.414, 1.3823, 38.5185, 38.716)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jl1ie"]
 atlas = ExtResource("1_7hwbw")
-region = Rect2(1027, 221, 69, 50)
+region = Rect2(798.742, 41.1241, 37.7284, 39.3086)
 
 [node name="QuestItem" type="MarginContainer"]
 script = ExtResource("1_fevqc")
@@ -138,7 +138,7 @@ size_flags_horizontal = 3
 [node name="PurpleIcon" type="Sprite2D" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PurpleContainer"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_iyn3x")
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_boat6")
 
 [node name="PurpleCount" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PurpleContainer"]
@@ -157,7 +157,7 @@ size_flags_horizontal = 3
 [node name="BlueIcon" type="Sprite2D" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/BlueContainer"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_cc66u")
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_v2ssr")
 
 [node name="BlueCount" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/BlueContainer"]
@@ -175,7 +175,7 @@ size_flags_horizontal = 3
 [node name="OrangeIcon" type="Sprite2D" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/OrangeContainer"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_jopcc")
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_pq704")
 
 [node name="OrangeCount" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/OrangeContainer"]
@@ -193,7 +193,7 @@ size_flags_horizontal = 3
 [node name="GreenIcon" type="Sprite2D" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/GreenContainer"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_byol7")
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_uy7ix")
 
 [node name="GreenCount" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/GreenContainer"]
@@ -211,7 +211,7 @@ size_flags_horizontal = 3
 [node name="PinkIcon" type="Sprite2D" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PinkContainer"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_hktxp")
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_4yliy")
 
 [node name="PinkCount" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PinkContainer"]
@@ -227,15 +227,15 @@ theme_override_constants/separation = 5
 
 [node name="CompleteButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
+size_flags_horizontal = 0
+size_flags_vertical = 4
 texture_normal = SubResource("AtlasTexture_gwl7b")
 stretch_mode = 0
 
 [node name="RemoveButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
+size_flags_horizontal = 10
+size_flags_vertical = 4
 texture_normal = SubResource("AtlasTexture_jl1ie")
 stretch_mode = 0
 

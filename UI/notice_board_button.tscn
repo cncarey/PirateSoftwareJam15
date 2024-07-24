@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ovb8"]
 atlas = ExtResource("1_a0dg8")
-region = Rect2(1439, 36, 156, 102)
+region = Rect2(720.544, 17.7533, 77.3334, 53.3333)
 
 [node name="NoticeBoardButton" type="TextureButton"]
 anchors_preset = 1

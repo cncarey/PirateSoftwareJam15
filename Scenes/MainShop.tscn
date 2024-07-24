@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1sm4f0hdd0g6"]
+[gd_scene load_steps=11 format=3 uid="uid://c1sm4f0hdd0g6"]
 
 [ext_resource type="Script" path="res://Scenes/MainShop.gd" id="1_1y7xo"]
 [ext_resource type="Script" path="res://Scenes/grid.gd" id="1_8rfly"]
@@ -8,13 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://baje1fv4yqxy5" path="res://UI/notice_board_button.tscn" id="5_2w8ck"]
 [ext_resource type="PackedScene" uid="uid://cb78fq8fn1mh4" path="res://UI/quests_ui.tscn" id="7_xfug3"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_35eem"]
+atlas = ExtResource("4_jjg36")
+region = Rect2(843, 48, 40, 40)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_futqo"]
 atlas = ExtResource("4_jjg36")
-region = Rect2(1932.6, 333.14, 621, 624)
+region = Rect2(960.5, 165.5, 315, 315)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbmwt"]
 atlas = ExtResource("4_jjg36")
-region = Rect2(812, 319, 1087, 510)
+region = Rect2(400, 162, 555, 241)
 
 [node name="MainShop" type="Node2D"]
 script = ExtResource("1_1y7xo")
@@ -40,29 +44,15 @@ yOffeset = 80
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+
 [node name="CoinUI" parent="CanvasLayer" instance=ExtResource("3_8k7vs")]
 offset_left = 25.0
 offset_top = 20.0
 offset_right = 60.0
 offset_bottom = 55.0
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -92.0
-offset_top = -59.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
-text = "End Day &
-Restock"
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -72,10 +62,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="NoticeBoardButton" parent="CanvasLayer" instance=ExtResource("5_2w8ck")]
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+offset_left = -84.0
+offset_top = 3.0
+offset_right = -7.0
+offset_bottom = 56.0
+scale = Vector2(1, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 4
@@ -94,19 +85,39 @@ size_flags_vertical = 3
 [node name="QuestsUI" parent="CanvasLayer/VBoxContainer" instance=ExtResource("7_xfug3")]
 layout_mode = 2
 
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Restock" type="Button" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+text = "End Day &
+Restock"
+icon = SubResource("AtlasTexture_35eem")
+
 [node name="Clouds" type="Sprite2D" parent="."]
-position = Vector2(383, 70)
-scale = Vector2(0.518519, 0.170873)
+position = Vector2(432.5, 84)
+scale = Vector2(1.23492, 0.47619)
 texture = SubResource("AtlasTexture_futqo")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(-4, -2)
 color = Color(1, 1, 0.894118, 1)
-polygon = PackedVector2Array(183, 207, 642, 213, 645, 2, 185, 2, 184, 22, 331, 26, 436, 31, 428, 81, 465, 81, 476, 38, 522, 43, 511, 123, 461, 120, 467, 80, 429, 80, 422, 113, 376, 115, 384, 25, 331, 26, 332, 156, 253, 155, 253, 23, 185, 21)
+polygon = PackedVector2Array(183, 207, 642, 213, 645, 2, 185, 2, 184, 22, 337, 34, 454, 40, 451, 82, 497, 82, 499, 48, 548, 47, 534, 135, 484, 131, 498, 82, 448, 88, 438, 129, 391, 128, 403, 40, 331, 26, 347, 46, 347, 90, 261, 92, 268, 27, 185, 21)
 
 [node name="StoreEntry" type="Sprite2D" parent="."]
-position = Vector2(372, 90)
-scale = Vector2(0.35, 0.35)
+position = Vector2(387, 97)
+scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_pbmwt")
 
 [connection signal="OpenNoticeBoard" from="CanvasLayer/NoticeBoardButton" to="." method="openNoticeBoard"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Restock" to="." method="_on_restock_pressed"]

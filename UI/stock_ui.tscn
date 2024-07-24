@@ -6,39 +6,39 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vrwxp"]
 atlas = ExtResource("1_fjrp3")
-region = Rect2(803, 162, 152, 150)
+region = Rect2(400, 76, 77, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwxeq"]
 atlas = ExtResource("1_fjrp3")
-region = Rect2(0, 0, 160, 160)
+region = Rect2(0, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eils8"]
 atlas = ExtResource("1_fjrp3")
-region = Rect2(160, 0, 160, 160)
+region = Rect2(86, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k4p7p"]
 atlas = ExtResource("1_fjrp3")
-region = Rect2(320, 0, 160, 160)
+region = Rect2(160, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_83o47"]
 atlas = ExtResource("1_fjrp3")
-region = Rect2(480, 0, 160, 160)
+region = Rect2(240, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e6jkk"]
 atlas = ExtResource("1_fjrp3")
-region = Rect2(650, 0, 160, 160)
+region = Rect2(320, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfpey"]
 atlas = ExtResource("1_fjrp3")
-region = Rect2(820, 0, 160, 160)
+region = Rect2(410, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oq47e"]
 atlas = ExtResource("1_fjrp3")
-region = Rect2(1120, 0, 160, 160)
+region = Rect2(486, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ipgef"]
 atlas = ExtResource("1_fjrp3")
-region = Rect2(970, 0, 160, 160)
+region = Rect2(560, 0, 80, 80)
 
 [node name="StockUI" type="MarginContainer"]
 script = ExtResource("1_debrp")
