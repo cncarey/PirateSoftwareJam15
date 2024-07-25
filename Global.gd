@@ -3,11 +3,14 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
+const TUITIONCOST = 2500
 
 @export var coins = 0:
 	set(value):
 		coins = maxi(0, value)
 		coins_changed.emit(coins)
+		if coins >= TUITIONCOST:
+			gameWon.emit()
 	get:
 		return coins
 func tryTakeCoins(dec: int) -> bool:

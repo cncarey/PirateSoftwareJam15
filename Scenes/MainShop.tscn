@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1sm4f0hdd0g6"]
+[gd_scene load_steps=12 format=3 uid="uid://c1sm4f0hdd0g6"]
 
 [ext_resource type="Script" path="res://Scenes/MainShop.gd" id="1_1y7xo"]
 [ext_resource type="Script" path="res://Scenes/grid.gd" id="1_8rfly"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://baje1fv4yqxy5" path="res://UI/notice_board_button.tscn" id="5_2w8ck"]
 [ext_resource type="PackedScene" uid="uid://cb78fq8fn1mh4" path="res://UI/quests_ui.tscn" id="7_xfug3"]
 [ext_resource type="PackedScene" uid="uid://lcdx4tcivkn8" path="res://Scenes/font_door.tscn" id="8_trp1m"]
+[ext_resource type="PackedScene" uid="uid://beivmm4g68h2c" path="res://UI/tuition_progress.tscn" id="8_wm1kx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_35eem"]
 atlas = ExtResource("4_jjg36")
@@ -35,7 +36,7 @@ script = ExtResource("1_8rfly")
 width = 6
 height = 5
 xStart = 190
-yStart = 570
+yStart = 700
 xOffset = 80
 yOffeset = 80
 
@@ -107,6 +108,10 @@ offset_top = 6.0
 offset_right = 393.8
 offset_bottom = 177.0
 texture_normal = SubResource("AtlasTexture_uxwal")
+
+[node name="TuitionProgress" parent="CanvasLayer" instance=ExtResource("8_wm1kx")]
+offset_top = 135.0
+offset_bottom = 203.0
 
 [node name="FrontDoor" parent="." instance=ExtResource("8_trp1m")]
 position = Vector2(189, 3)

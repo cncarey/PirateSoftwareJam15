@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://beivmm4g68h2c"]
+
+[ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="1_pby4v"]
+[ext_resource type="Script" path="res://UI/tuition_progress.gd" id="1_shppe"]
+[ext_resource type="LabelSettings" uid="uid://c5g4525m0w8a7" path="res://Assets/Fonts/default_label.tres" id="1_ts3ds"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwhh2"]
+bg_color = Color(0.839708, 0.999296, 0.833271, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 10
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0c8b"]
+bg_color = Color(0.0980392, 0.298039, 0.14902, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl2ym"]
+atlas = ExtResource("1_pby4v")
+region = Rect2(646.867, 9.28225, 64.8889, 60.4444)
+
+[node name="TuitionProgress" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 43
+theme_override_constants/margin_right = 7
+script = ExtResource("1_shppe")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Tuition" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Tuition"
+label_settings = ExtResource("1_ts3ds")
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 20
+theme_override_styles/background = SubResource("StyleBoxFlat_cwhh2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_y0c8b")
+max_value = 2500.0
+step = 1.0
+rounded = true
+show_percentage = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = -42
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_bl2ym")
+stretch_mode = 4

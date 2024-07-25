@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dttm1gh5eoe5"]
+[gd_scene load_steps=7 format=3 uid="uid://dttm1gh5eoe5"]
 
 [ext_resource type="Script" path="res://Menus/main_menu.gd" id="1_j4y5q"]
 [ext_resource type="Texture2D" uid="uid://cd3e1ylatduft" path="res://Assets/MainMenu.png" id="2_i5141"]
@@ -7,6 +7,10 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_7lwia"]
 atlas = ExtResource("2_i5141")
 region = Rect2(177, 107, 176, 179)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57cr6"]
+atlas = ExtResource("2_i5141")
+region = Rect2(266.8, 0, 1013.2, 720)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6fvcg"]
 font_size = 25
@@ -20,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j4y5q")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="Tile" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,17 +32,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_7lwia")
-expand_mode = 4
 stretch_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 249.0
-offset_right = 637.0
-offset_bottom = 495.0
-texture = ExtResource("2_i5141")
+[node name="MainPic" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -195.0
+offset_right = -28.0
+offset_bottom = 51.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_57cr6")
 expand_mode = 3
+stretch_mode = 4
 
 [node name="MainContainer" type="MarginContainer" parent="."]
 layout_mode = 1
