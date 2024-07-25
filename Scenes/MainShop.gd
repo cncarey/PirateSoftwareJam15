@@ -5,7 +5,7 @@ extends Node2D
 @onready var grid = $grid
 @onready var front_door = $FrontDoor
 
-
+var fine = preload("res://UI/fine_notice.tscn")
 var noticeBoard = preload("res://UI/notice_board.tscn")
 var potionNotice = preload("res://UI/potion_notice.tscn")
 
@@ -66,6 +66,10 @@ func _on_restock_pressed():
 	grid.clearBoard()
 	pass # Replace with function body.
 
+func displayFine():
+	var f = fine.instantiate()
+	center_container.add_child(f)
+	pass
 
 func onStringPulled():
 	front_door.onStringPulled()

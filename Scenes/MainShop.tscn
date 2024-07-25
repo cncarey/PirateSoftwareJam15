@@ -24,8 +24,8 @@ script = ExtResource("1_1y7xo")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 640.0
-offset_bottom = 700.0
+offset_right = 648.0
+offset_bottom = 1160.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.449129, 0.00249202, 0.93435, 1)
@@ -88,7 +88,7 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -97.0
+offset_left = -141.0
 offset_top = -64.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -115,3 +115,4 @@ scale = Vector2(0.7, 0.7)
 [connection signal="OpenNoticeBoard" from="CanvasLayer/NoticeBoardButton" to="." method="openNoticeBoard"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Restock" to="." method="_on_restock_pressed"]
 [connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="onStringPulled"]
+[connection signal="finePlayer" from="FrontDoor" to="." method="displayFine"]

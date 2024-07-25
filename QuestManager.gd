@@ -11,7 +11,7 @@ var todaysQuests : Array = []
 			maxedOutTurnForDay.emit()
 	get:
 		return curTurn
-@export var maxTurn = 5:
+@export var maxTurn = 7:
 	set (value):
 		maxTurn = maxi(0, value)
 		maxTurn_changed.emit(maxTurn)

@@ -134,3 +134,6 @@ signal pink_changed(p)
 signal flowers_changed(f)
 signal eyes_changed(e)
 signal mushrooms_changed(m)
+
+signal gameOver()
+signal gameWon()

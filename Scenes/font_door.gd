@@ -5,6 +5,8 @@ var isFrontEnabled = false
 @onready var shade = $Shade
 @onready var timer = $Timer
 
+signal finePlayer()
+
 func startInvestigator():
 	animation_player.play("investigator")
 	pass # Replace with function body.
@@ -27,6 +29,7 @@ func sendFine():
 		pass
 	else:
 		print("you didn't stop the investigator in time")
+		finePlayer.emit()
 	
 func resetInvestigator():
 	animation_player.play("RESET")

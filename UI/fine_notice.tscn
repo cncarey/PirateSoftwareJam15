@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwqtb1hif81pi"]
+
+[ext_resource type="Script" path="res://UI/fine_notice.gd" id="1_bsg2x"]
+[ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="1_ve3lu"]
+[ext_resource type="LabelSettings" uid="uid://c5g4525m0w8a7" path="res://Assets/Fonts/default_label.tres" id="2_vp6bn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihdud"]
+atlas = ExtResource("1_ve3lu")
+region = Rect2(248.779, 165.619, 66.3704, 70.2222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx6vm"]
+atlas = ExtResource("1_ve3lu")
+region = Rect2(644.799, 9.7507, 68.4445, 59.5556)
+
+[node name="FineNotice" type="MarginContainer"]
+offset_right = 90.0
+offset_bottom = 80.0
+script = ExtResource("1_bsg2x")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ihdud")
+patch_margin_left = 7
+patch_margin_top = 6
+patch_margin_right = 5
+patch_margin_bottom = 13
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 14
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="fine" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "FINE"
+label_settings = ExtResource("2_vp6bn")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_xx6vm")
+expand_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 10
+
+[node name="FineCost" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00"
+label_settings = ExtResource("2_vp6bn")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="caught" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "You got CAUGHT!"
+label_settings = ExtResource("2_vp6bn")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="disappear"]
