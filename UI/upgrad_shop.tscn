@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwvlt4vgehd6u"]
+[gd_scene load_steps=3 format=3 uid="uid://cwvlt4vgehd6u"]
 
 [ext_resource type="Script" path="res://UI/upgrad_shop.gd" id="1_64438"]
+[ext_resource type="LabelSettings" uid="uid://cjrv187wltsqq" path="res://Assets/Fonts/shop_item_Title.tres" id="2_6jmns"]
 
 [node name="UpgradShop" type="CanvasLayer"]
 script = ExtResource("1_64438")
@@ -11,5 +12,38 @@ script = ExtResource("1_64438")
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ShopItemContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2
+
+[node name="ShopItemContainer" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DisplayNameContainer" type="MarginContainer" parent="MarginContainer/ShopItemContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="UpgradeTitle" type="Label" parent="MarginContainer/ShopItemContainer/DisplayNameContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Name Of Upgrade"
+label_settings = ExtResource("2_6jmns")
+
+[node name="DescriptionContainer" type="MarginContainer" parent="MarginContainer/ShopItemContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/ShopItemContainer/DescriptionContainer"]
+layout_mode = 2
+color = Color(0.188969, 0.188969, 0.188969, 1)
+
+[node name="UpgradeDescription" type="RichTextLabel" parent="MarginContainer/ShopItemContainer/DescriptionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "Here is the description of the item that was selected."
+fit_content = true
