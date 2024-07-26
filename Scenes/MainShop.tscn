@@ -29,14 +29,14 @@ offset_right = 648.0
 offset_bottom = 1160.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.449129, 0.00249202, 0.93435, 1)
+color = Color(0.766228, 0.71433, 1, 1)
 
 [node name="grid" type="Node2D" parent="."]
 script = ExtResource("1_8rfly")
 width = 6
-height = 5
+height = 7
 xStart = 190
-yStart = 700
+yStart = 760
 xOffset = 80
 yOffeset = 80
 

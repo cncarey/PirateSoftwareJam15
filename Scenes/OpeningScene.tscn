@@ -1,3 +1,177 @@
-[gd_scene format=3 uid="uid://do448l1codh1g"]
+[gd_scene load_steps=7 format=3 uid="uid://do448l1codh1g"]
+
+[ext_resource type="Script" path="res://Scenes/OpeningScene.gd" id="1_6kyn7"]
+[ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="2_p4gm5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq6mq"]
+atlas = ExtResource("2_p4gm5")
+region = Rect2(164, 168, 71, 69)
+
+[sub_resource type="Animation" id="Animation_n3lmj"]
+resource_name = "OpenPage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/MarginContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 0.85, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 500), Vector2(49, 149), Vector2(98, 174)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/MarginContainer:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(461, 745)]
+}
+
+[sub_resource type="Animation" id="Animation_kdg8x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/MarginContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(119, 435)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/MarginContainer:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(434, 257)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bgci4"]
+_data = {
+"OpenPage": SubResource("Animation_n3lmj"),
+"RESET": SubResource("Animation_kdg8x")
+}
 
 [node name="OpeningScene" type="Node2D"]
+script = ExtResource("1_6kyn7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.764706, 0.713726, 1, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -201.0
+offset_top = -133.0
+offset_right = 233.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_dq6mq")
+region_rect = Rect2(0, 0, 71, 69)
+patch_margin_left = 64
+patch_margin_top = 16
+patch_margin_right = 62
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 22
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+text = "Dear character,
+It's not your fault, but you have to stop going to The School for Gifted Witches and Wizards. Your mom and I just can't afford tuition anymore. If you really want to go, you'll have to make some money the old fashioned way. Just DON'T get caught! You need to make 2500 number of coins in the next 30 days if you want to continue your studies.
+Love Dad"
+
+[node name="SkipProgress" type="ProgressBar" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -61.0
+offset_right = -37.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.5
+step = 0.001
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/SkipProgress"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hold Enter to Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bgci4")
+}
