@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/fine_notice.gd" id="1_bsg2x"]
 [ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="1_ve3lu"]
-[ext_resource type="LabelSettings" uid="uid://c5g4525m0w8a7" path="res://Assets/Fonts/default_label.tres" id="2_vp6bn"]
+[ext_resource type="LabelSettings" uid="uid://dkplio5v3bxye" path="res://Assets/Fonts/ui_header_label.tres" id="3_8lhlv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ihdud"]
 atlas = ExtResource("1_ve3lu")
@@ -38,7 +38,7 @@ layout_mode = 2
 [node name="fine" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "FINE"
-label_settings = ExtResource("2_vp6bn")
+label_settings = ExtResource("3_8lhlv")
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -59,7 +59,7 @@ theme_override_constants/margin_right = 10
 unique_name_in_owner = true
 layout_mode = 2
 text = "00"
-label_settings = ExtResource("2_vp6bn")
+label_settings = ExtResource("3_8lhlv")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -71,7 +71,7 @@ theme_override_constants/margin_bottom = 10
 unique_name_in_owner = true
 layout_mode = 2
 text = "You got CAUGHT!"
-label_settings = ExtResource("2_vp6bn")
+label_settings = ExtResource("3_8lhlv")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

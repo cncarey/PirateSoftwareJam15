@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/stock_ui.gd" id="1_debrp"]
 [ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="1_fjrp3"]
-[ext_resource type="LabelSettings" uid="uid://c5g4525m0w8a7" path="res://Assets/Fonts/default_label.tres" id="3_68pv1"]
+[ext_resource type="LabelSettings" uid="uid://dkplio5v3bxye" path="res://Assets/Fonts/ui_header_label.tres" id="3_4aswy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vrwxp"]
 atlas = ExtResource("1_fjrp3")
@@ -41,6 +41,7 @@ atlas = ExtResource("1_fjrp3")
 region = Rect2(560, 0, 80, 80)
 
 [node name="StockUI" type="MarginContainer"]
+mouse_filter = 2
 script = ExtResource("1_debrp")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
@@ -53,6 +54,7 @@ patch_margin_bottom = 11
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 21
 theme_override_constants/margin_top = 9
 theme_override_constants/margin_right = 15
@@ -64,7 +66,7 @@ layout_mode = 2
 [node name="Stock" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Stock"
-label_settings = ExtResource("3_68pv1")
+label_settings = ExtResource("3_4aswy")
 
 [node name="PurpleContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -81,7 +83,7 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "0
 "
-label_settings = ExtResource("3_68pv1")
+label_settings = ExtResource("3_4aswy")
 
 [node name="BlueContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -97,7 +99,7 @@ expand_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
-label_settings = ExtResource("3_68pv1")
+label_settings = ExtResource("3_4aswy")
 
 [node name="OrangeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -113,7 +115,7 @@ expand_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
-label_settings = ExtResource("3_68pv1")
+label_settings = ExtResource("3_4aswy")
 
 [node name="GreenContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -129,7 +131,7 @@ expand_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
-label_settings = ExtResource("3_68pv1")
+label_settings = ExtResource("3_4aswy")
 
 [node name="PinkContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -145,7 +147,7 @@ expand_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
-label_settings = ExtResource("3_68pv1")
+label_settings = ExtResource("3_4aswy")
 
 [node name="EyeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -161,7 +163,7 @@ expand_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
-label_settings = ExtResource("3_68pv1")
+label_settings = ExtResource("3_4aswy")
 
 [node name="FlowerContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -177,7 +179,7 @@ expand_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
-label_settings = ExtResource("3_68pv1")
+label_settings = ExtResource("3_4aswy")
 
 [node name="MushroomContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -193,4 +195,4 @@ expand_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
-label_settings = ExtResource("3_68pv1")
+label_settings = ExtResource("3_4aswy")

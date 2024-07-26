@@ -2,7 +2,7 @@ extends Node
 
 var quests : Array = []
 var todaysQuests : Array = []
-
+var RefillQuestsFilledToday : bool = false
 @export var curTurn = 0:
 	set (value):
 		curTurn = maxi(0, value)
@@ -16,12 +16,15 @@ var todaysQuests : Array = []
 		maxTurn = maxi(0, value)
 		maxTurn_changed.emit(maxTurn)
 	get:
-		return maxTurn
+		var upgrade = UpgradeManager.upgrades["MoreTurns"]
+		var extraTurns = upgrade["CurIncrease"] * 3
+		return maxTurn + extraTurns
 @export var curDay = 1:
 	set (value):
 		curDay = maxi(0, value)
 		updateQuestDays()
 		setTodaysQuests()
+		RefillQuestsFilledToday = false
 		curTurn = 0
 		curDay_changed.emit(curDay)
 	get:
@@ -32,7 +35,10 @@ var todaysQuests : Array = []
 		questMaxCount = maxi(2, value)
 		questMaxCount_changed.emit(questMaxCount)
 	get:
-		return questMaxCount	
+		var upgrade = UpgradeManager.upgrades["MoreQuests"]
+		var extraQuests = upgrade["CurIncrease"]
+		
+		return questMaxCount + extraQuests
 @export var maxBoardCount = 4 : 
 	set(value):
 		maxBoardCount = maxi(4, value)
@@ -44,7 +50,11 @@ var todaysQuests : Array = []
 	set(value):
 		isFrontEnabled = value
 		#when we set up upgrade check if we ignore this
-		curTurn += 1
+		var upgrade = UpgradeManager.upgrades["NoTurnFront"]
+		var noTurnCost = upgrade["CurIncrease"]
+		
+		if noTurnCost <= 0:
+			curTurn += 1
 		isFrontEnabled_change.emit(isFrontEnabled)
 	get:
 		return isFrontEnabled
@@ -111,7 +121,9 @@ func filterLate(q):
 
 func setTodaysQuests():
 	todaysQuests.clear()
+	addQuestsToBoard()
 	
+func addQuestsToBoard():	
 	for x in range(maxBoardCount):
 		var quest = {}
 		var requiredPotions: Array = []

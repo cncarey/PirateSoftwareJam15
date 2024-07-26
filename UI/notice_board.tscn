@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dc3gbqvsct66"]
+[gd_scene load_steps=7 format=3 uid="uid://dc3gbqvsct66"]
 
 [ext_resource type="Script" path="res://UI/notice_board.gd" id="1_6mxa5"]
 [ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="2_npk88"]
@@ -7,9 +7,21 @@
 atlas = ExtResource("2_npk88")
 region = Rect2(163, 243, 151, 152)
 
+[sub_resource type="LabelSettings" id="LabelSettings_3t0iq"]
+font_size = 40
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqc36"]
+atlas = ExtResource("2_npk88")
+region = Rect2(847.199, 48.3693, 26.6666, 26.3704)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_277t5"]
+atlas = ExtResource("2_npk88")
+region = Rect2(797.296, 44.0956, 39.7037, 35.5556)
+
 [node name="NoticeBoard" type="MarginContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/margin_left = 20
 script = ExtResource("1_6mxa5")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
@@ -22,6 +34,7 @@ patch_margin_bottom = 41
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 51
 theme_override_constants/margin_top = 61
 theme_override_constants/margin_right = 55
@@ -29,19 +42,44 @@ theme_override_constants/margin_bottom = 51
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Notice Board"
+label_settings = SubResource("LabelSettings_3t0iq")
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 columns = 3
 
-[node name="Close" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="NavContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 8
-text = "Close"
+mouse_filter = 2
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 18
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Close" to="." method="onClose"]
+[node name="HBoxContainer" type="HBoxContainer" parent="NavContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="ResetBtn" type="TextureButton" parent="NavContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 2
+disabled = true
+texture_normal = SubResource("AtlasTexture_aqc36")
+
+[node name="Close" type="TextureButton" parent="NavContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = SubResource("AtlasTexture_277t5")
+
+[connection signal="pressed" from="NavContainer/HBoxContainer/ResetBtn" to="." method="resetBoard"]
+[connection signal="pressed" from="NavContainer/HBoxContainer/Close" to="." method="onClose"]

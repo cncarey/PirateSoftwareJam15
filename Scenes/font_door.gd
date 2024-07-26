@@ -36,6 +36,13 @@ func resetInvestigator():
 	
 	#refactor so that if we haven't made a turn since the last investigator we
 	#will restart it after the next turn is made
-	var timeBetween = randi_range(15, 45)
+	#TODO get faster with the more coins that we have
+	
+	var upgrade = UpgradeManager.upgrades["LessInvestigators"]
+	var extraTime = upgrade["CurIncrease"]
+	var minSecs = 15 * (extraTime + 1)
+	var maxSecs = 45 * (extraTime + 1)
+	
+	var timeBetween = randi_range(minSecs, maxSecs)
 	timer.start(timeBetween)
 	

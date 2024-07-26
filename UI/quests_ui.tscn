@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cb78fq8fn1mh4"]
 
 [ext_resource type="Script" path="res://UI/quests_ui.gd" id="1_ivjn3"]
-[ext_resource type="LabelSettings" uid="uid://c5g4525m0w8a7" path="res://Assets/Fonts/default_label.tres" id="2_m0abw"]
+[ext_resource type="LabelSettings" uid="uid://dkplio5v3bxye" path="res://Assets/Fonts/ui_header_label.tres" id="2_7wm25"]
 
 [node name="QuestsUI" type="MarginContainer"]
 offset_right = 40.0
@@ -20,13 +20,13 @@ layout_mode = 2
 [node name="curQuests" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Current Quests"
-label_settings = ExtResource("2_m0abw")
+label_settings = ExtResource("2_7wm25")
 
 [node name="QuestCount" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0/2"
-label_settings = ExtResource("2_m0abw")
+label_settings = ExtResource("2_7wm25")
 horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]

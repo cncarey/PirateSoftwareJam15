@@ -13,6 +13,7 @@ extends MarginContainer
 signal selectedItem(s, q)
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	connect("focus_entered", onPressed)
 	match(sealPosition):
 		0:
 			message_container.size_flags_horizontal = SIZE_SHRINK_BEGIN

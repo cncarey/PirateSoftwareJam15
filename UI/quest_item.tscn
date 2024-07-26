@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="1_7hwbw"]
 [ext_resource type="Script" path="res://UI/quest_item.gd" id="1_fevqc"]
-[ext_resource type="LabelSettings" uid="uid://c5g4525m0w8a7" path="res://Assets/Fonts/default_label.tres" id="2_51r6n"]
+[ext_resource type="LabelSettings" uid="uid://dkplio5v3bxye" path="res://Assets/Fonts/ui_header_label.tres" id="3_1xyli"]
 [ext_resource type="Shader" path="res://Effects/Shanders/shine.gdshader" id="4_kah31"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1c1u"]
@@ -117,7 +117,7 @@ theme_override_constants/margin_bottom = 7
 unique_name_in_owner = true
 layout_mode = 2
 text = "x Days Left"
-label_settings = ExtResource("2_51r6n")
+label_settings = ExtResource("3_1xyli")
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
@@ -146,7 +146,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
 text = "0"
-label_settings = ExtResource("2_51r6n")
+label_settings = ExtResource("3_1xyli")
 
 [node name="BlueContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -164,7 +164,7 @@ texture = SubResource("AtlasTexture_v2ssr")
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
-label_settings = ExtResource("2_51r6n")
+label_settings = ExtResource("3_1xyli")
 
 [node name="OrangeContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -182,7 +182,7 @@ texture = SubResource("AtlasTexture_pq704")
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
-label_settings = ExtResource("2_51r6n")
+label_settings = ExtResource("3_1xyli")
 
 [node name="GreenContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -200,7 +200,7 @@ texture = SubResource("AtlasTexture_uy7ix")
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
-label_settings = ExtResource("2_51r6n")
+label_settings = ExtResource("3_1xyli")
 
 [node name="PinkContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -218,7 +218,7 @@ texture = SubResource("AtlasTexture_4yliy")
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
-label_settings = ExtResource("2_51r6n")
+label_settings = ExtResource("3_1xyli")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
