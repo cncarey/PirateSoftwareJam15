@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwvlt4vgehd6u"]
+
+[ext_resource type="Script" path="res://UI/upgrad_shop.gd" id="1_64438"]
+
+[node name="UpgradShop" type="CanvasLayer"]
+script = ExtResource("1_64438")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ShopItemContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2

@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpputbyyau4al"]
+
+[ext_resource type="Script" path="res://UI/shop_item.gd" id="1_6r640"]
+[ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="1_8762u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khnsm"]
+atlas = ExtResource("1_8762u")
+region = Rect2(646, 11, 65, 59)
+
+[node name="ShopItem" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_6r640")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="DisplayName" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Display Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_khnsm")
+expand_mode = 3
+
+[node name="Cost" type="Label" parent="HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00"
