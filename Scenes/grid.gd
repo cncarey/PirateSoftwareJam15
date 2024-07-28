@@ -109,10 +109,12 @@ func isTouched():
 	if Input.is_action_just_released("ui_touch"):
 		var checkGridPosition = get_global_mouse_position()
 		var gridPosition = pixelToGrid(checkGridPosition.x, checkGridPosition.y)
-		if isInGrid(gridPosition.x, gridPosition.y) && isMoving:
+		if isInGrid(gridPosition.x, gridPosition.y) && isMoving && startTouch != null:
 			isMoving = false
 			translateMove(pixelToGrid(startTouch.x, startTouch.y), gridPosition)
 			endTouch = get_global_mouse_position()
+			
+	
 			
 func swapPotions(column: int, row: int, direction: Vector2):
 	var newX = column + direction.x
@@ -158,7 +160,7 @@ func translateMove(start: Vector2, end: Vector2):
 			swapPotions(start.x, start.y, Vector2(0,-1))	
 
 func _process(delta):
-	if curState == moving && !QuestManager.isFrontEnabled:
+	if curState == moving && !QuestManager.isFrontEnabled && !Global.shopOpen:
 		isTouched()
 	
 func findMatches():

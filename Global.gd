@@ -5,6 +5,13 @@ func _ready():
 	pass
 const TUITIONCOST = 2500
 
+@export var shopOpen = false:
+	set(value):
+		shopOpen = value
+		shopOpen_changed.emit(shopOpen)
+	get:
+		return shopOpen
+
 @export var coins = 0:
 	set(value):
 		coins = maxi(0, value)
@@ -127,6 +134,8 @@ func tryTakeMushrooms(dec: int) -> bool:
 	else:
 		mushrooms -= dec
 		return true
+		
+signal shopOpen_changed(o)
 		
 signal coins_changed(coins)
 signal purple_changed(p)

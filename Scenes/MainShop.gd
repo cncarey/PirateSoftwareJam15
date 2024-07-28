@@ -4,6 +4,8 @@ extends Node2D
 @onready var center_container = $CanvasLayer/CenterContainer
 @onready var grid = $grid
 @onready var front_door = $FrontDoor
+@onready var upgrade_shop = $UpgradShop
+
 
 var fine = preload("res://UI/fine_notice.tscn")
 var noticeBoard = preload("res://UI/notice_board.tscn")
@@ -19,12 +21,12 @@ func onDayEnd():
 	QuestManager.updateQuestDays()
 
 func openNoticeBoard():
-	#TODO open the notice board
-	var nb = noticeBoard.instantiate()
-	center_container.add_child(nb)
-	nb.connect("closeNoticeBoard", closeNoticeBoard)
-	nb.connect("noticeBoardSelected", noticeBoardSelected)
-	pass # Replace with function body.
+	if !Global.shopOpen:
+		var nb = noticeBoard.instantiate()
+		center_container.add_child(nb)
+		nb.connect("closeNoticeBoard", closeNoticeBoard)
+		nb.connect("noticeBoardSelected", noticeBoardSelected)
+		pass # Replace with function body.
 
 func closeNoticeBoard():
 	notice_board_button.closeNoticeBoard()
@@ -62,8 +64,9 @@ func onEndOfDay():
 
 
 func _on_restock_pressed():
-	onEndOfDay()
-	grid.clearBoard()
+	if !Global.shopOpen:
+		onEndOfDay()
+		grid.clearBoard()
 	pass # Replace with function body.
 
 func displayFine():
@@ -72,5 +75,8 @@ func displayFine():
 	pass
 
 func onStringPulled():
-	front_door.onStringPulled()
-	pass # Replace with function body.
+	if !Global.shopOpen:
+		front_door.onStringPulled()
+
+func openShop():
+	upgrade_shop.onOpen()

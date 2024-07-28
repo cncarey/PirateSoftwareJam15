@@ -7,6 +7,9 @@ var isFrontEnabled = false
 
 signal finePlayer()
 
+func _ready():
+	Global.shopOpen_changed.connect(pauseInvestigator)
+
 func startInvestigator():
 	animation_player.play("investigator")
 	pass # Replace with function body.
@@ -46,3 +49,29 @@ func resetInvestigator():
 	var timeBetween = randi_range(minSecs, maxSecs)
 	timer.start(timeBetween)
 	
+var curAniPos = null	
+var curTimerTime = null
+func pauseInvestigator(isShopOpen: bool):
+	if isShopOpen:
+		if animation_player.is_playing():
+			curAniPos = animation_player.current_animation_position
+			curTimerTime = null
+			animation_player.pause()
+		elif timer.time_left > 0:
+			curAniPos = null
+			curTimerTime = timer.time_left
+		else:
+			curAniPos = null
+			curTimerTime = 5
+		timer.stop()
+	else:
+		if curAniPos != null:
+			animation_player.play()
+		elif curTimerTime != null:
+			timer.start()
+		else:
+			timer.start(5)
+		
+		curAniPos = null
+		curTimerTime = null
+	pass

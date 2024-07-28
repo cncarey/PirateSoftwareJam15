@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1sm4f0hdd0g6"]
+[gd_scene load_steps=13 format=3 uid="uid://c1sm4f0hdd0g6"]
 
 [ext_resource type="Script" path="res://Scenes/MainShop.gd" id="1_1y7xo"]
 [ext_resource type="Script" path="res://Scenes/grid.gd" id="1_8rfly"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cb78fq8fn1mh4" path="res://UI/quests_ui.tscn" id="7_xfug3"]
 [ext_resource type="PackedScene" uid="uid://lcdx4tcivkn8" path="res://Scenes/font_door.tscn" id="8_trp1m"]
 [ext_resource type="PackedScene" uid="uid://beivmm4g68h2c" path="res://UI/tuition_progress.tscn" id="8_wm1kx"]
+[ext_resource type="PackedScene" uid="uid://cwvlt4vgehd6u" path="res://UI/upgrad_shop.tscn" id="9_1lk0g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_35eem"]
 atlas = ExtResource("4_jjg36")
@@ -66,6 +67,17 @@ offset_right = -7.0
 offset_bottom = 56.0
 scale = Vector2(1, 1)
 
+[node name="ShopButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -59.0
+offset_top = 58.0
+offset_right = -12.0
+offset_bottom = 89.0
+grow_horizontal = 0
+text = "Shop"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 4
 anchor_top = 0.5
@@ -114,11 +126,14 @@ texture_normal = SubResource("AtlasTexture_uxwal")
 offset_top = 135.0
 offset_bottom = 203.0
 
+[node name="UpgradShop" parent="." instance=ExtResource("9_1lk0g")]
+
 [node name="FrontDoor" parent="." instance=ExtResource("8_trp1m")]
 position = Vector2(189, 3)
 scale = Vector2(0.7, 0.7)
 
 [connection signal="OpenNoticeBoard" from="CanvasLayer/NoticeBoardButton" to="." method="openNoticeBoard"]
+[connection signal="pressed" from="CanvasLayer/ShopButton" to="." method="openShop"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Restock" to="." method="_on_restock_pressed"]
 [connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="onStringPulled"]
 [connection signal="finePlayer" from="FrontDoor" to="." method="displayFine"]

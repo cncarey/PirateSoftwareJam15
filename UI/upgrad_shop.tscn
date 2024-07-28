@@ -1,25 +1,97 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwvlt4vgehd6u"]
+[gd_scene load_steps=11 format=3 uid="uid://cwvlt4vgehd6u"]
 
 [ext_resource type="Script" path="res://UI/upgrad_shop.gd" id="1_64438"]
 [ext_resource type="LabelSettings" uid="uid://cjrv187wltsqq" path="res://Assets/Fonts/shop_item_Title.tres" id="2_6jmns"]
+[ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="3_jdm10"]
+
+[sub_resource type="Animation" id="Animation_p4tq0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bovse"]
+resource_name = "SlideIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uy3ff"]
+resource_name = "SlideOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.00136e-05, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8kktd"]
+_data = {
+"RESET": SubResource("Animation_p4tq0"),
+"SlideIn": SubResource("Animation_bovse"),
+"SlideOut": SubResource("Animation_uy3ff")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vi1r"]
+atlas = ExtResource("3_jdm10")
+region = Rect2(648, 10, 63, 59)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x84j4"]
+font_size = 28
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6i7y"]
+atlas = ExtResource("3_jdm10")
+region = Rect2(798.489, 8.95322, 38.6667, 31.5556)
 
 [node name="UpgradShop" type="CanvasLayer"]
 script = ExtResource("1_64438")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8kktd")
+}
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ShopContainer" type="MarginContainer" parent="."]
+offset_right = 420.0
+offset_bottom = 230.0
+scale = Vector2(1e-05, 1e-05)
+theme_override_constants/margin_top = 10
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="ShopContainer"]
 layout_mode = 2
 
-[node name="ShopItemContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopContainer"]
+layout_mode = 2
+
+[node name="ShopItemContainer" type="VBoxContainer" parent="ShopContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="DisplayNameContainer" type="MarginContainer" parent="MarginContainer/ShopItemContainer"]
+[node name="DisplayNameContainer" type="MarginContainer" parent="ShopContainer/VBoxContainer/ShopItemContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 15
@@ -27,23 +99,57 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 10
 
-[node name="UpgradeTitle" type="Label" parent="MarginContainer/ShopItemContainer/DisplayNameContainer"]
+[node name="UpgradeTitle" type="Label" parent="ShopContainer/VBoxContainer/ShopItemContainer/DisplayNameContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Name Of Upgrade"
 label_settings = ExtResource("2_6jmns")
 
-[node name="DescriptionContainer" type="MarginContainer" parent="MarginContainer/ShopItemContainer"]
+[node name="DescriptionContainer" type="MarginContainer" parent="ShopContainer/VBoxContainer/ShopItemContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/ShopItemContainer/DescriptionContainer"]
+[node name="ColorRect" type="ColorRect" parent="ShopContainer/VBoxContainer/ShopItemContainer/DescriptionContainer"]
 layout_mode = 2
 color = Color(0.188969, 0.188969, 0.188969, 1)
 
-[node name="UpgradeDescription" type="RichTextLabel" parent="MarginContainer/ShopItemContainer/DescriptionContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopContainer/VBoxContainer/ShopItemContainer/DescriptionContainer"]
+layout_mode = 2
+
+[node name="UpgradeDescription" type="RichTextLabel" parent="ShopContainer/VBoxContainer/ShopItemContainer/DescriptionContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 25
 text = "Here is the description of the item that was selected."
 fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopContainer/VBoxContainer/ShopItemContainer/DescriptionContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="ShopContainer/VBoxContainer/ShopItemContainer/DescriptionContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_6vi1r")
+
+[node name="Cost" type="Label" parent="ShopContainer/VBoxContainer/ShopItemContainer/DescriptionContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "00"
+label_settings = SubResource("LabelSettings_x84j4")
+
+[node name="PurchaseButton" type="TextureButton" parent="ShopContainer/VBoxContainer/ShopItemContainer/DescriptionContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = SubResource("AtlasTexture_r6i7y")
+
+[node name="CloseContainer" type="MarginContainer" parent="ShopContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="ShopContainer/VBoxContainer/CloseContainer"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="pressed" from="ShopContainer/VBoxContainer/ShopItemContainer/DescriptionContainer/VBoxContainer/HBoxContainer/PurchaseButton" to="." method="purchaseUpgrade"]
+[connection signal="pressed" from="ShopContainer/VBoxContainer/CloseContainer/Close" to="." method="onClose"]
