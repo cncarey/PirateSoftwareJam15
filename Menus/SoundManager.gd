@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var sound_player = $SoundPlayer
+@onready var music_player = $MusicPlayer
 
 var destroyFx = preload("res://Assets/Sounds/destroy.mp3")
 var swapFx = preload("res://Assets/Sounds/movePiece.mp3")
@@ -10,6 +11,7 @@ var crumplePaperFx = preload("res://Assets/Sounds/paperCrumple.mp3")
 var coinsFx = preload("res://Assets/Sounds/purchase.mp3")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	music_player.play()
 	pass # Replace with function body.
 
 func playSound(sound: String):

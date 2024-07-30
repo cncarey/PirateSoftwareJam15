@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bl21upak7o1qq"]
+[gd_scene load_steps=5 format=3 uid="uid://bl21upak7o1qq"]
 
 [ext_resource type="Script" path="res://UI/game_over.gd" id="1_e8njo"]
 [ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="2_h6b0v"]
+[ext_resource type="LabelSettings" uid="uid://cjrv187wltsqq" path="res://Assets/Fonts/shop_item_Title.tres" id="3_oti2b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oid8b"]
 atlas = ExtResource("2_h6b0v")
@@ -15,9 +16,17 @@ script = ExtResource("1_e8njo")
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
 texture = SubResource("AtlasTexture_oid8b")
+patch_margin_left = 14
+patch_margin_top = 17
+patch_margin_right = 8
+patch_margin_bottom = 9
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+theme_override_constants/margin_left = 51
+theme_override_constants/margin_top = 51
+theme_override_constants/margin_right = 51
+theme_override_constants/margin_bottom = 51
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -26,10 +35,13 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "Congrat/I'm Sorry To Inform You"
+label_settings = ExtResource("3_oti2b")
 
 [node name="Message" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
 fit_content = true
 
 [node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer"]

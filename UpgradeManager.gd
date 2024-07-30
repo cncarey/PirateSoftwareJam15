@@ -25,27 +25,27 @@ var upgrades = {
 		"CurIncrease" : 0,
 		"Cost" : [600]
 	},
-	"AddRow":{
-		"DisplayName" : "Add Shop Row",
-		"Description": "Add one more row to the shop floor",
-		"MaxIncrease": 3,
-		"CurIncrease" : 0,
-		"Cost" : [250, 450, 600]
-	},
-	"FreeRestock":{
-		"DisplayName" : "Free Shop Restock",
-		"Description": "Refill the Shop without loosing the day. Loose one turn instead.",
-		"MaxIncrease": 1,
-		"CurIncrease" : 0,
-		"Cost" : [600]
-	},
-	"BlackCat":{
-		"DisplayName" : "Black Cat",
-		"Description": "You cat will ring the bell when the investigator shows up",
-		"MaxIncrease": 1,
-		"CurIncrease" : 0,
-		"Cost" : [250]
-	},
+	#"AddRow":{
+		#"DisplayName" : "Add Shop Row",
+		#"Description": "Add one more row to the shop floor",
+		#"MaxIncrease": 3,
+		#"CurIncrease" : 0,
+		#"Cost" : [250, 450, 600]
+	#},
+	#"FreeRestock":{
+		#"DisplayName" : "Free Shop Restock",
+		#"Description": "Refill the Shop without loosing the day. Loose one turn instead.",
+		#"MaxIncrease": 1,
+		#"CurIncrease" : 0,
+		#"Cost" : [600]
+	#},
+	#"BlackCat":{
+		#"DisplayName" : "Black Cat",
+		#"Description": "You cat will ring the bell when the investigator shows up",
+		#"MaxIncrease": 1,
+		#"CurIncrease" : 0,
+		#"Cost" : [250]
+	#},
 	#imp
 	"NoTurnFront":{
 		"DisplayName" : "Free Fronts",

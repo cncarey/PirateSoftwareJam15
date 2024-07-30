@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dttm1gh5eoe5"]
+[gd_scene load_steps=9 format=3 uid="uid://dttm1gh5eoe5"]
 
 [ext_resource type="Script" path="res://Menus/main_menu.gd" id="1_j4y5q"]
 [ext_resource type="Texture2D" uid="uid://cd3e1ylatduft" path="res://Assets/MainMenu.png" id="2_i5141"]
@@ -14,6 +14,14 @@ region = Rect2(266.8, 0, 1013.2, 720)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6fvcg"]
 font_size = 25
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wm4m"]
+atlas = ExtResource("2_i5141")
+region = Rect2(159.833, 426.329, 150.222, 136.889)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uyf4d"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -80,7 +88,7 @@ text = "Options"
 
 [node name="Tutorial" type="Button" parent="MainContainer/MainContainer"]
 layout_mode = 2
-text = "Tutorial"
+text = "How To Play"
 
 [node name="GameTitle2" type="Label" parent="MainContainer/MainContainer"]
 layout_mode = 2
@@ -126,11 +134,60 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 text = "Version 0.0.1"
 
+[node name="HowToPlayContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -296.0
+offset_right = 641.0
+offset_bottom = 171.0
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="TextureRect" type="TextureRect" parent="HowToPlayContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_3wm4m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HowToPlayContainer"]
+layout_mode = 2
+
+[node name="How To Play" type="Label" parent="HowToPlayContainer/VBoxContainer"]
+layout_mode = 2
+text = "How To Play"
+label_settings = SubResource("LabelSettings_uyf4d")
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HowToPlayContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+text = "- Match 3 like potions to collect potions
+- Click the notice board to view currently requested potions
+- Choose one to fulfil and select yes, selecting no will close it with out adding it
+- Get enough potions to create the requested potion before the requested number or days
+- Click the check to turn in a potion request
+- Open the shop to purchase upgrades
+- If you run out of moves or don't like your options click the 'End Day & Restock' button to reset the board
+- If you make the deadline you win and if not you loose
+IMPORTANT
+-Pull the red string to turn on/off the magic front before the investigator peeks in your window. If he catches you, you will get fined
+"
+fit_content = true
+
+[node name="HTPReturnButton" type="Button" parent="HowToPlayContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Return"
+
 [connection signal="mouse_entered" from="MainContainer/MainContainer/Start" to="." method="onHover"]
 [connection signal="pressed" from="MainContainer/MainContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="mouse_entered" from="MainContainer/MainContainer/Options" to="." method="onHover"]
 [connection signal="pressed" from="MainContainer/MainContainer/Options" to="." method="showOptions"]
-[connection signal="focus_exited" from="MainContainer/MainContainer/Tutorial" to="." method="onHover"]
+[connection signal="mouse_entered" from="MainContainer/MainContainer/Tutorial" to="." method="onHover"]
+[connection signal="pressed" from="MainContainer/MainContainer/Tutorial" to="." method="showHowToPlay"]
 [connection signal="mouse_entered" from="MainContainer/MainContainer/Quit" to="." method="onHover"]
 [connection signal="pressed" from="MainContainer/MainContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="returnButton" from="OptionsContainer" to="." method="hideOptions"]
+[connection signal="pressed" from="HowToPlayContainer/VBoxContainer/HTPReturnButton" to="." method="hideHowToPlay"]

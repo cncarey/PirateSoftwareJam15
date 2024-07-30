@@ -27,6 +27,8 @@ var RefillQuestsFilledToday : bool = false
 		RefillQuestsFilledToday = false
 		curTurn = 0
 		curDay_changed.emit(curDay)
+		if curDay > 30:
+			Global.gameOver.emit()
 	get:
 		return curDay
 

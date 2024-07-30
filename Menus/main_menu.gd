@@ -1,6 +1,7 @@
 extends Control
 @onready var options_container = $OptionsContainer
 @onready var main_container = $MainContainer/MainContainer
+@onready var how_to_play_container = $HowToPlayContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +30,17 @@ func showOptions():
 	SoundManager.playSound("menu")
 	main_container.hide()
 	options_container.show()
+	pass
+
+func hideHowToPlay():
+	main_container.show()
+	SoundManager.playSound("menu")
+	how_to_play_container.hide()
+	pass
+func showHowToPlay():
+	SoundManager.playSound("menu")
+	main_container.hide()
+	how_to_play_container.show()
 	pass
 
 func _on_quit_pressed():
