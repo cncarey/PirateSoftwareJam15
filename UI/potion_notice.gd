@@ -45,11 +45,15 @@ func _ready():
 func acceptQuest():
 	#push the requiredIngrediants and remove the items in the board
 	if QuestManager.addQuest(quest):
+		SoundManager.playSound("paper")
 		acceptedNotice.emit()
 		queue_free()
+	else:
+		SoundManager.playSound("error")
 	pass
 	
 func closeQuest():
+	SoundManager.playSound("menu")
 	queue_free()
 	pass
 	

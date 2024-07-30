@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl21upak7o1qq"]
+
+[ext_resource type="Script" path="res://UI/game_over.gd" id="1_e8njo"]
+[ext_resource type="Texture2D" uid="uid://q7lgopk72l3c" path="res://Assets/alchemyArt.png" id="2_h6b0v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oid8b"]
+atlas = ExtResource("2_h6b0v")
+region = Rect2(164, 168, 72, 68)
+
+[node name="GameOver" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_e8njo")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_oid8b")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Congrat/I'm Sorry To Inform You"
+
+[node name="Message" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+fit_content = true
+
+[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Close"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CloseButton" to="." method="onCloseButton"]

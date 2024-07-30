@@ -37,6 +37,7 @@ func _ready():
 
 
 func masterVolumeChanged(value: float):
+	SoundManager.playSound("menu")
 	AudioServer.set_bus_volume_db(master_bus, value)
 	
 	if value == -30:
@@ -46,6 +47,7 @@ func masterVolumeChanged(value: float):
 	pass
 	
 func musicVolumeChanged(value: float):
+	SoundManager.playSound("menu")
 	AudioServer.set_bus_volume_db(music_bus, value)
 	
 	if value == -30:
@@ -55,6 +57,7 @@ func musicVolumeChanged(value: float):
 	pass
 	
 func sfxVolumeChanged(value: float):
+	SoundManager.playSound("menu")
 	AudioServer.set_bus_volume_db(sfx_bus, value)
 	
 	if value == -30:
@@ -68,3 +71,8 @@ func grabReturnFocus():
 
 func return_pressed():
 	returnButton.emit()
+
+
+func onHover():
+	SoundManager.playSound("menu")
+	pass # Replace with function body.

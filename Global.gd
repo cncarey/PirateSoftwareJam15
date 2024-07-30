@@ -3,6 +3,18 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
+func resetGame():
+	shopOpen = false
+	coins = 0
+	purple = 0
+	blue = 0
+	orange = 0
+	green = 0
+	pink = 0
+	flowers = 0
+	eyes = 0
+	mushrooms = 0
+
 const TUITIONCOST = 2500
 
 @export var shopOpen = false:
@@ -11,7 +23,6 @@ const TUITIONCOST = 2500
 		shopOpen_changed.emit(shopOpen)
 	get:
 		return shopOpen
-
 @export var coins = 0:
 	set(value):
 		coins = maxi(0, value)

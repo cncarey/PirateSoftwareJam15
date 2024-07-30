@@ -20,4 +20,5 @@ func _on_pressed():
 	pass # Replace with function body.
 
 func closeNoticeBoard():
+	SoundManager.playSound("menu")
 	disabled = false

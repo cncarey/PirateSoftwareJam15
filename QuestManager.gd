@@ -78,6 +78,14 @@ signal QuestReplaced()
 func _ready():
 	pass # Replace with function body.
 
+func resetGame():
+	curTurn = -1
+	maxTurn = 7
+	curDay = 1
+	questMaxCount = 2
+	maxBoardCount = 4
+	isFrontEnabled = false
+
 func addQuest(q) -> bool:
 	if canAddQuest():
 		q["accepted"] = true

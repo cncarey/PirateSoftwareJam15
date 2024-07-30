@@ -97,7 +97,10 @@ theme_override_colors/font_focus_color = Color(0.72549, 0.490196, 0.184314, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.992157, 0.890196, 0.34902, 1)
 text = "Return"
 
+[connection signal="mouse_entered" from="VBoxContainer/MasterContainer/MasterSlider" to="." method="onHover"]
 [connection signal="value_changed" from="VBoxContainer/MasterContainer/MasterSlider" to="." method="masterVolumeChanged"]
+[connection signal="mouse_entered" from="VBoxContainer/MusicContainer/MusicSlider" to="." method="onHover"]
 [connection signal="value_changed" from="VBoxContainer/MusicContainer/MusicSlider" to="." method="musicVolumeChanged"]
+[connection signal="mouse_entered" from="VBoxContainer/SFxContainer/SFxSlider" to="." method="onHover"]
 [connection signal="value_changed" from="VBoxContainer/SFxContainer/SFxSlider" to="." method="sfxVolumeChanged"]
 [connection signal="pressed" from="VBoxContainer/ReturnContainer/Button" to="." method="return_pressed"]

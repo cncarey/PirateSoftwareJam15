@@ -87,35 +87,32 @@ func onComplete():
 			Global.tryTakeGreen(quest[3])
 		if quest.has(4):
 			Global.tryTakePink(quest[4])
+		SoundManager.playSound("coins")
 		QuestManager.completeQuest(quest)
 		queue_free()
 	pass
 
 func onRemove():
+	SoundManager.playSound("menu")
 	QuestManager.removeQuest(quest)
 	queue_free()
 	
 func onPurpleChange(count):
 	if quest.has(0):
-		if count >= quest[0]:
-			purple_icon.material.set_shader_parameter("start", true)
+		purple_icon.material.set_shader_parameter("start", count >= quest[0])
 	
 func onBlueChange(count):
 	if quest.has(1):
-		if count >= quest[1]:
-			blue_icon.material.set_shader_parameter("start", true)
+		blue_icon.material.set_shader_parameter("start", count >= quest[1])
 	
 func onOrangeChange(count):
 	if quest.has(2):
-		if count >= quest[2]:
-			orange_icon.material.set_shader_parameter("start", true)
+		orange_icon.material.set_shader_parameter("start", count >= quest[2])
 	
 func onGreenChange(count):
 	if quest.has(3):
-		if count >= quest[3]:
-			green_icon.material.set_shader_parameter("start", true)
+		green_icon.material.set_shader_parameter("start", count >= quest[3])
 	
 func onPinkChange(count):
 	if quest.has(4):
-		if count >= quest[4]:
-			pink_icon.material.set_shader_parameter("start", true)
+		pink_icon.material.set_shader_parameter("start", count >= quest[4])

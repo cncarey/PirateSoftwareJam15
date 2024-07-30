@@ -6,20 +6,27 @@ extends Control
 func _ready():
 	pass # Replace with function body.
 
+func onHover():
+	SoundManager.playSound("menu")
 
 func _on_start_pressed():
-	#Global.resetGame()
-	#TODO go to the opening cut scene
+	SoundManager.playSound("menu")
+	Global.resetGame()
+	UpgradeManager.resetGame()
+	QuestManager.resetGame()
+	await LevelTransition.fadeToBlack()
 	get_tree().change_scene_to_file("res://Scenes/OpeningScene.tscn")
-	pass # Replace with function body.
+	LevelTransition.fadeFromBlack()
 
 
 func hideOptions():
+	SoundManager.playSound("menu")
 	main_container.show()
 	options_container.hide()
 	pass
 	
 func showOptions():
+	SoundManager.playSound("menu")
 	main_container.hide()
 	options_container.show()
 	pass

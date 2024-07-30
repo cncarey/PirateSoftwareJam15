@@ -114,7 +114,18 @@ func isTouched():
 			translateMove(pixelToGrid(startTouch.x, startTouch.y), gridPosition)
 			endTouch = get_global_mouse_position()
 			
-	
+func wasGridTouched():
+	if Input.is_action_just_pressed("ui_touch"):
+		var checkGridPosition = get_global_mouse_position()
+		var gridPosition = pixelToGrid(checkGridPosition.x, checkGridPosition.y)
+		return isInGrid(gridPosition.x, gridPosition.y)
+		
+	if Input.is_action_just_released("ui_touch"):
+		var checkGridPosition = get_global_mouse_position()
+		var gridPosition = pixelToGrid(checkGridPosition.x, checkGridPosition.y)
+		return isInGrid(gridPosition.x, gridPosition.y) 
+		
+	return false
 			
 func swapPotions(column: int, row: int, direction: Vector2):
 	var newX = column + direction.x
@@ -124,6 +135,7 @@ func swapPotions(column: int, row: int, direction: Vector2):
 	var endPotion = potions[newX][newY]
 	if startPotion == null || endPotion == null : return
 	
+	SoundManager.playSound("swap")
 	lastStart = startPotion
 	lastEnd = endPotion
 	lastGridLoc = Vector2(column, row)
@@ -141,6 +153,7 @@ func swapPotions(column: int, row: int, direction: Vector2):
 
 func swapBack():
 	if lastStart != null && lastEnd != null:
+		SoundManager.playSound("swap")
 		swapPotions(lastGridLoc.x, lastGridLoc.y, lastDirection)
 	curState = moving
 	moveChecked = false
@@ -158,10 +171,16 @@ func translateMove(start: Vector2, end: Vector2):
 			swapPotions(start.x, start.y, Vector2(0,1))
 		elif diff.y < 0:
 			swapPotions(start.x, start.y, Vector2(0,-1))	
+	
+	
 
 func _process(delta):
 	if curState == moving && !QuestManager.isFrontEnabled && !Global.shopOpen:
 		isTouched()
+	elif curState == moving && QuestManager.isFrontEnabled && !Global.shopOpen:
+		if wasGridTouched():
+			SoundManager.playSound("error")
+			await get_tree().create_timer(.5).timeout
 	
 func findMatches():
 	for w in width:
@@ -197,7 +216,7 @@ func destroyMatched():
 					foundMatch = true
 					potions[w][h].queue_free()
 					potions[w][h] = null
-
+					SoundManager.playSound("destroy")
 	moveChecked = true
 	if foundMatch:							
 		await get_tree().create_timer(.3).timeout

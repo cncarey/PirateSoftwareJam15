@@ -31,7 +31,9 @@ func _ready():
 		pass
 	pass # Replace with function body.
 
-func updateSelected(_shopItem, upgrade):
+func updateSelected(_shopItem, upgrade, playSound = true):
+	if playSound:
+		SoundManager.playSound("menu")
 	curShopItem = _shopItem
 	curUpgrade = upgrade
 	upgrade_title.text = upgrade["DisplayName"]
@@ -60,29 +62,36 @@ func coinsChanged(glbCoins):
 			isPurchasable(glbCoins, curCost)
 
 func isPurchasable(glbCoins, upgradCost):
+	purchase_button.disabled = false
 	if glbCoins >= upgradCost:
-		purchase_button.disabled = false
 		purchase_button.modulate = Color(1,1,1,1)
 	else:
-		purchase_button.disabled = true
 		purchase_button.modulate = Color(1,1,1,.5)
 	
 func purchaseUpgrade():
+	if curUpgrade == null: 
+		SoundManager.playSound("error")
+		return
+		
 	var costs = curUpgrade["Cost"]
 	if costs.size() > curUpgrade["CurIncrease"]:
 		var curCost = costs[curUpgrade["CurIncrease"]]
 		if Global.tryTakeCoins(curCost):
+			SoundManager.playSound("coins")
 			curUpgrade["CurIncrease"] += 1
-			updateSelected(curShopItem, curUpgrade)
+			updateSelected(curShopItem, curUpgrade, false)
 			curShopItem.updateUpgrade()
-		pass
+		else:
+			SoundManager.playSound("error")
 
 func onOpen():
+	SoundManager.playSound("menu")
 	Global.shopOpen = true
 	if shop_container.scale.x != 1:
 		animation_player.play("SlideOut")
 
 func onClose():
+	SoundManager.playSound("menu")
 	Global.shopOpen = false
 	animation_player.play("SlideIn")
 	ShopClosed.emit()

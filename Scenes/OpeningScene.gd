@@ -15,6 +15,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	SoundManager.playSound("paper")
 	animation_player.play("OpenPage")
 	pass # Replace with function body.
 
@@ -27,6 +28,13 @@ func _unhandled_input(event):
 	if event.is_action_released("ui_accept"):
 		curPress = 0
 
+var startTriggered = false
 func startGame():
-	get_tree().change_scene_to_file("res://Scenes/MainShop.tscn")
+	if !startTriggered:
+		startTriggered = true
+		await LevelTransition.fadeToBlack()
+		await get_tree().create_timer(.3).timeout
+		get_tree().change_scene_to_file("res://Scenes/MainShop.tscn")
+		LevelTransition.fadeFromBlack()
+	
 	pass

@@ -18,8 +18,10 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Global.gd"
+LevelTransition="*res://UI/LevelTransition.tscn"
 UpgradeManager="*res://UpgradeManager.gd"
 QuestManager="*res://QuestManager.gd"
+SoundManager="*res://Menus/SoundManager.tscn"
 
 [display]
 

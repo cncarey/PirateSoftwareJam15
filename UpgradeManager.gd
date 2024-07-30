@@ -68,6 +68,11 @@ var upgrades = {
 func _ready():
 	pass # Replace with function body.
 
+func resetGame():
+	for key in upgrades:
+		var upgrade = upgrades[key]
+		upgrade["CurIncrease"] = 0
+	pass
 
 func tryUpgrade(u):
 	if u["CurIncrease"] < u["MaxIncrease"]:
